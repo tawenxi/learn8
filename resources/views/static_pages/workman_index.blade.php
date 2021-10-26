@@ -52,9 +52,9 @@
        <td>{{$results->sum('jbgz2')}}</td>
       <td>{{$results->sum('jbt2')}}</td>
       <td>{{$results->sum('bonus')}}</td>
-      <td>{{$results->sum('ylbx2')}}</td>
+      <td>{{round($results->sum('ylbx2'),0)}}</td>
 
-      <th>{{$results->sum('gjj2')}}</th>
+      <th>{{round($results->sum('gjj2'))}}</th>
       <th>{{round($results->sum('yb'),0)}}</th>
       <th>{{round($results->sum('sb'),0)}}</th>
       <th>{{round($results->sum('gb'),0)}}</th>
@@ -70,10 +70,10 @@
       <td>{{$results->sum('qrf')}}</td>
     
 
-      <td>{{$results->sum('ghjf')}}</td>
+      <td>{{round($results->sum('ghjf'))}}</td>
       <td>{{$results->sum('bgf')}}</td>
 
-      <td>{{$results->sum('total')}}</td>
+      <td>{{round($results->sum('total'))}}</td>
   
 
 
@@ -105,10 +105,10 @@
       <td>{{$result->qrf}}</td>
      
 
-      <td>{{$result->ghjf}}</td>
+      <td>{{round($result->ghjf)}}</td>
       <td>{{$result->bgf}}</td>
 
-      <td>{{$result->total}}</td>
+      <td>{{round($result->total,0)}}</td>
 
 
 
