@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return 1;
+});
+
+
+
+Route::get('/home/{keyword}', 'FileController@index')->name('home');
+Route::get('/retires/{keyword}', 'RetiresController@index')->name('retires_index');
+
+Route::get('/retiresexport', 'RetiresController@export');
+Route::get('/unit/{keyword}', 'UnitController@index');
+Route::get('/workman/{keyword}', 'WorkmanController@index');
+Route::get('/workman', 'WorkmanController@home');
+
+
+Route::get('/transfer/行政/{type}', 'TransferController@xingzheng');
+Route::get('/transfer/事业/{type}', 'TransferController@shiye');
+
+Route::get('/transfer/县直', 'TransferController@xianzhi');
+
+Route::get('/transfer/{keyword}', 'TransferController@index');
+Route::get('/transferlist', 'TransferController@list');
+Route::get('/transfer', 'TransferController@home');
+Route::get('/transferorders', 'TransferController@order');
+
