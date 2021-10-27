@@ -38,3 +38,7 @@ Route::get('/transferlist', 'TransferController@list');
 Route::get('/transfer', 'TransferController@home');
 Route::get('/transferorders', 'TransferController@order');
 
+
+Route::get('/findman/{keyword}', 'HomeController@findman');
+
+
