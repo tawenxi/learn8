@@ -1,0 +1,73 @@
+@extends('layouts.default')
+
+@section('content')
+
+    <div class="row">
+      <div class="col-md-15 ">
+        <section class="status_form">
+        
+        </section>
+        <br>
+        <br>
+        <br>
+
+
+ <h1 class="title" align="middle"> 增资调整表 </h1>
+<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+    <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
+    <thead>
+      <tr class='bg-primary'>
+   
+      <th>单位</th>
+      <th>金额</th>
+      <th>明细</th>
+
+
+
+      </tr>
+    </thead>
+
+    <tbody class='table-hover'>
+            <tr class='success'>
+        
+ 
+      @foreach ($results as $k=>$result)
+      <tr class=''>
+        
+
+ 
+      <td> <a href="/transfer/{{$k}}">{{$k}}</a></td>
+       <td>{{$result->sum('amount')}}</td>
+       <td>
+
+           @foreach ($result as $k=>$res)
+           {{$res->zhaiyao }} <br><br>
+           @endforeach 
+       </td>
+
+
+
+
+    </tr>
+       @endforeach 
+
+       
+</table>
+
+
+
+
+
+      
+      </div>
+      <aside class="col-md-4">
+        <section class="user_info">
+          、
+        </section>
+        <section class="stats">
+         、
+        </section>
+      </aside>
+    </div>
+ 
+@stop

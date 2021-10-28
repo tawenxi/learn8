@@ -38,7 +38,9 @@ Route::get('/transferlist', 'TransferController@list');
 Route::get('/transfer', 'TransferController@home');
 Route::get('/transferorders', 'TransferController@order');
 
-
+Route::get('/findman/mutiman', 'HomeController@mutiman');
 Route::get('/findman/{keyword}', 'HomeController@findman');
+
+Route::get('/adjust/', 'HomeController@adjust');
 
 
