@@ -15,7 +15,7 @@ class importexcel extends Command
      *
      * @var string
      */
-    protected $signature = 'import:excel';
+    protected $signature = 'import:retires';
 
     /**
      * The console command description.
@@ -60,7 +60,7 @@ class importexcel extends Command
             $table->string('amount')->default("")->nullable();
         });
         $this->output->title('Starting import');
-        (new RetiresImport)->withOutput($this->output)->import('data4.xlsx');
+        (new RetiresImport)->withOutput($this->output)->import('excel\202110机关事业单位退休花名册.xlsx');
         $this->output->success('Import successful');
     }
 }

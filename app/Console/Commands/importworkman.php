@@ -42,7 +42,7 @@ class importworkman extends Command
     public function handle()
     {
         $this->output->title('Starting import');
-        (new WorkmanImport)->withOutput($this->output)->import('data5.xls');
+        (new WorkmanImport)->withOutput($this->output)->import('excel\测算预算.xls');
         $this->output->success('Import successful');
     }
 }

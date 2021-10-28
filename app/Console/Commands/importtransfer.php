@@ -49,7 +49,7 @@ class importtransfer extends Command
         DB::table('transfer_orders')->truncate();
         DB::table('transfer_accounts')->truncate();
         $this->output->title('Starting import');
-        (new TransferImport)->withOutput($this->output)->import('data6.xlsx');
+        (new TransferImport)->withOutput($this->output)->import('\excel\2021调动人员登记本.xlsx');
         $this->output->success('Import successful');
         $this->output->title('构建Account表格');
         $this->createAccount();

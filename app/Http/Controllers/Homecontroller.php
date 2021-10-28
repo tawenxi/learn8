@@ -8,13 +8,18 @@ use App\Adjust;
 
 class Homecontroller extends Controller
 {
+
+
+    public function home(){
+        return view('static_pages.homepage');
+
+    }
     public function findman($keyword) {
         $results = Yusuanman::where('unit', 'like', "%$keyword%")
             ->Orwhere('education', 'like', "%$keyword%")
             ->Orwhere('name', 'like', "%$keyword%")
             ->Orwhere('certificateid', 'like', "%$keyword%")
             ->get();
-           
         return view('static_pages.yusuanman_findman',compact('results','keyword'));
 
     }
@@ -33,5 +38,20 @@ class Homecontroller extends Controller
 
         //dd($results);
         return view('static_pages.adjust_home',compact('results'));
+    }
+
+    public function adjustorder($keyword)
+    {
+        $results = Adjust::where('unit', 'like', "%$keyword%")
+            ->Orwhere('name', 'like', "%$keyword%")
+            ->Orwhere('zhaiyao', 'like', "%$keyword%")
+            ->get();
+        return view('static_pages.adjust_order',compact('results','keyword'));
+    }
+    public function adjustlist(){
+        $results = Adjust::all()->groupBy('unit');
+
+        //dd($results);
+        return view('static_pages.adjustlist',compact('results'));
     }
 }

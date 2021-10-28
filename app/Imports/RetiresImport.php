@@ -43,10 +43,10 @@ class RetiresImport implements ToModel, WithChunkReading, WithBatchInserts, With
             'personname' => $row[4],
             'certificateid' => $row[5],
             'sex' => $row[6],
-            'worktime' => $row[7],
-            'retirestime' => $row[8],
-            'bankid' => $row[9],
-            'amount' => $row[10],
+            'worktime' => $row[8],
+            'retirestime' => $row[9],
+            'bankid' => $row[13],
+            'amount' => $row[16],
         ]);
     }
 

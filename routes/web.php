@@ -13,13 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 1;
-});
+
+Route::get('/', 'HomeController@home');
 
 
-
-Route::get('/home/{keyword}', 'FileController@index')->name('home');
+Route::get('/home/{keyword}', 'FileController@index');
 Route::get('/retires/{keyword}', 'RetiresController@index')->name('retires_index');
 
 Route::get('/retiresexport', 'RetiresController@export');
@@ -42,5 +40,8 @@ Route::get('/findman/mutiman', 'HomeController@mutiman');
 Route::get('/findman/{keyword}', 'HomeController@findman');
 
 Route::get('/adjust/', 'HomeController@adjust');
+Route::get('/adjustlist/', 'HomeController@adjustlist');
+Route::get('/adjustorder/{keyword}', 'HomeController@adjustorder');
+
 
 
