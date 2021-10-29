@@ -11,12 +11,13 @@ use Maatwebsite\Excel\Concerns\WithProgressBar;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 
 use Maatwebsite\Excel\Imports\HeadingRowFormatter;
 
 HeadingRowFormatter::default('none');
 
-class AdjustImport implements ToModel, WithProgressBar,WithStartRow, WithHeadingRow
+class AdjustImport implements ToModel, WithProgressBar,WithStartRow,WithHeadingRow,WithCalculatedFormulas
 {
     use Importable;
     

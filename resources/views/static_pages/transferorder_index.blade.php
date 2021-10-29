@@ -80,7 +80,7 @@
       <td>{{$result['unit']}}</td>
 
       <td>{{$result['newamount']}}</td>
-      <td>{{$result['personname']}}</td>
+      <td><a href="/findman/{{$result['personname']}}">{{$result['personname']}}</a></td>
 
       <td>{{$result['jbgz']}}</td>
       <td>{{$result['jbt']}}</td>

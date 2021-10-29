@@ -92,12 +92,14 @@ class Workman extends Model
 
     public function getJbtAttribute()  //津补贴
     {
-        $temp = $this->attributes['allowance'] + $this->attributes['performancepay'];
+        $temp = $this->attributes['allowance'] + $this->attributes['performancepay'] - $this->GCBZBZ();
         return $temp;
     }
+
+
     public function getJbt2Attribute()  //年度津补贴
     {
-        $temp = $this->attributes['allowance'] + $this->attributes['performancepay'];
+        $temp = $this->attributes['allowance'] + $this->attributes['performancepay'] - $this->GCBZBZ();
         return $temp*12;
     }
     public function getRcgzAttribute()  //年度工资总额+社保16%+公积金12%
@@ -185,5 +187,11 @@ class Workman extends Model
             return $this->jishu2*0.08;
         }
         return 0;
+    }
+
+    public function getAllowanceAttribute()  //年度津补贴
+    {
+        $temp = $this->attributes['allowance'] - $this->GCBZBZ();
+        return $temp*12;
     }
 }
