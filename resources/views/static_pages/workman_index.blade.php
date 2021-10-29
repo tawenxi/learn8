@@ -9,7 +9,7 @@
         </section>
         <br><br><br><br>
 
- <h1 class="title" align="middle"> {{$keyword}}</h1>
+ <h1 class="title" align="middle"> {{$keyword}}  -- {{  $results->count() }}人</h1>
 <table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>

@@ -10,7 +10,7 @@ class WorkmanController extends Controller
     public function index ($keyword) {
 
 
-        $results = Workman::where('unitname', 'like', "%$keyword%")->get();
+        $results = Workman::where('unitname', 'like', "%$keyword%")->orderBy('salary1','desc')->get();
 
         return view('static_pages.workman_index',compact('results','keyword'));
 
