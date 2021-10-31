@@ -126,7 +126,7 @@ class Workman extends Model
     public function getBonus2Attribute()   //年终奖
     {
         $temp = $this->attributes['salary1'] + $this->attributes['salary2'];
-        return $temp*12;
+        return $temp;
     }
     public function getGhjfAttribute()  // 年度工会经费
     {

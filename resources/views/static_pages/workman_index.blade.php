@@ -16,7 +16,7 @@
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
-   
+    <th>单位</th>
       <th>姓名</th>
       <th>基本工资</th>
       <th>津补贴</th>
@@ -51,6 +51,8 @@
         
  
       <td>合计</td>
+       <td></td>
+
        <td>{{$results->sum('jbgz2')}}</td>
       <td>{{$results->sum('jbt2')}}</td>
       <td>{{$results->sum('bonus')}}</td>
@@ -86,7 +88,7 @@
       <tr class=''>
         
  
- 
+ <td>{{$result->unitname}}</td>
       <td>{{$result->personname}}</td>
       <td>{{$result->jbgz2}}</td>
       <td>{{$result->jbt2}}</td>
