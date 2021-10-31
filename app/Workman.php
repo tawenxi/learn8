@@ -104,12 +104,12 @@ class Workman extends Model
     }
     public function getRcgzAttribute()  //年度工资总额+社保16%+公积金12%
     {
-        $temp = ($this->attributes['salary1'] + $this->attributes['salary2'] + $this->attributes['allowance'] + $this->attributes['performancepay']) * $this->calculateTime * 1.28;
+        $temp = ($this->attributes['salary1'] + $this->attributes['salary2'] + $this->jbt + $this->attributes['performancepay']) * $this->calculateTime * 1.28;
         return $temp;
     }
     public function getYlbx2Attribute()  //年度工资总额+社保16%+公积金12%
     {
-        $temp = ($this->attributes['salary1'] + $this->attributes['salary2'] + $this->attributes['allowance'] + $this->attributes['performancepay']) * $this->calculateTime * 0.16;
+        $temp = ($this->attributes['salary1'] + $this->attributes['salary2'] + $this->jbt + $this->attributes['performancepay']) * $this->calculateTime * 0.16;
         return $temp;
     }
     public function getGjj2Attribute()  //年度工资总额+社保16%+公积金12%
@@ -130,7 +130,7 @@ class Workman extends Model
     }
     public function getGhjfAttribute()  // 年度工会经费
     {
-         $temp = ($this->attributes['salary1'] + $this->attributes['salary2'] + $this->attributes['allowance'] + $this->attributes['performancepay']) * $this->calculateTime * 0.02 * 0.6;
+         $temp = ($this->attributes['salary1'] + $this->attributes['salary2'] + $this->jbt + $this->attributes['performancepay']) * $this->calculateTime * 0.02 * 0.6;
          return $temp;
     }
 
