@@ -9,7 +9,9 @@
         </section>
         <br><br><br><br>
 
- <h1 class="title" align="middle"> {{$keyword}}  -- {{  $results->count() }}人</h1>
+  <h1 class="title" align="middle"> {{$keyword}} -- {{$results->count()}}人</h1>
+ <h1 class="title" align="middle">  <{{$results->filter(function($v){return $v->ifonwork=='2-在职人员'; })->count()}}人在职>
+  <{{$results->filter(function($v){return $v->ifonwork=='3-退休人员'; })->count()}}人退休><font color="red"></font></h1>
 <table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>

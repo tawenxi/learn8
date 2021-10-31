@@ -44,4 +44,8 @@ Route::get('/adjustlist/', 'HomeController@adjustlist');
 Route::get('/adjustorder/{keyword}', 'HomeController@adjustorder');
 
 
+Route::get('/compare/{keyword}', 'YusuanController@compare');
+
+
+
 
