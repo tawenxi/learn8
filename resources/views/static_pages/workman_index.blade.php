@@ -20,6 +20,7 @@
       <th>姓名</th>
       <th>基本工资</th>
       <th>津补贴</th>
+      <th>绩效工资</th>
       <th>奖金</th>
 
       <th>养老保险</th>
@@ -55,6 +56,10 @@
 
        <td>{{$results->sum('jbgz2')}}</td>
       <td>{{$results->sum('jbt2')}}</td>
+
+      <td>{{$results->sum('performancepay2')}}</td>
+
+
       <td>{{$results->sum('bonus')}}</td>
       <td>{{round($results->sum('ylbx2'),0)}}</td>
 
@@ -92,6 +97,7 @@
       <td>{{$result->personname}}</td>
       <td>{{$result->jbgz2}}</td>
       <td>{{$result->jbt2}}</td>
+      <td>{{$result->performancepay2}}</td>
       <td>{{$result->bonus}}</td>
 
       <td>{{round($result->ylbx2)}}</td>

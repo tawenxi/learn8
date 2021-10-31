@@ -11,7 +11,7 @@ class WorkmanController extends Controller
 
 
         $results = Workman::where('unitname', 'like', "%$keyword%")->orderBy('salary1','desc')->get();
-
+       // dd(Workman::where('personname',  "周德榆")->first()->total2);
         return view('static_pages.workman_index',compact('results','keyword'));
 
 

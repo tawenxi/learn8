@@ -92,14 +92,14 @@ class Workman extends Model
 
     public function getJbtAttribute()  //津补贴
     {
-        $temp = $this->attributes['allowance'] + $this->attributes['performancepay'] - $this->GCBZBZ();
+        $temp = $this->attributes['allowance']  - $this->GCBZBZ();
         return $temp;
     }
 
 
     public function getJbt2Attribute()  //年度津补贴
     {
-        $temp = $this->attributes['allowance'] + $this->attributes['performancepay'] - $this->GCBZBZ();
+        $temp = $this->attributes['allowance']  - $this->GCBZBZ();
         return $temp*12;
     }
     public function getRcgzAttribute()  //年度工资总额+社保16%+公积金12%
@@ -142,20 +142,24 @@ class Workman extends Model
 
     public function getJishu2Attribute()  //年度基本工资+津补贴
     {
-        $temp = $this->jbgz+$this->jbt;
+        $temp = $this->jbgz+$this->jbt+$this->performancepay;
         return $temp * 12;
     }
     public function getTotal2Attribute()  //总和
     {
-        return "{$this->jbgz}+({$this->jbgz}+{$this->jbt})*12*1.28+({$this->jbgz}+{$this->jbt})*12*0.02*0.6+{$this->jwf}+{$this->QRF}+({$this->GCBZBZ()}+{$this->XZBZBZ()}) * 12+{$this->Bgf}";
+        return "{$this->jbgz2}+{$this->jbt2}+{$this->performancepay2}+{$this->bonus}+{$this->ylbx2}+{$this->gjj2}+{$this->yb}+{$this->sb}+{$this->gb}+{$this->nj}+{$this->cb}+{$this->xb}+{$this->jwf}+{$this->qrf}+{$this->ghjf}+{$this->bgf};";
          
     }
     public function getTotalAttribute()  //总和
     {
-        $temp = $this->jbgz2+$this->jbt2+$this->ylbx2+$this->gjj2+$this->yb+$this->sb+$this->gb+$this->nj+$this->cb+$this->xb+$this->jwf+$this->qrf+$this->ghjf+$this->bgf+$this->bonus;
+
+        $temp = $this->jbgz2+$this->jbt2+$this->performancepay2+$this->ylbx2+$this->gjj2+$this->yb+$this->sb+$this->gb+$this->nj+$this->cb+$this->xb+$this->jwf+$this->qrf+$this->ghjf+$this->bgf+$this->bonus;
         return $temp;
     }
-
+    public function getPerformancepay2Attribute()
+    {
+        return $this->attributes['performancepay']*12;
+    }
     public function setFirstNameAttribute($value)
     {
         $this->attributes['first_name'] = strtolower($value);

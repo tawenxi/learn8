@@ -135,7 +135,7 @@
         
       <td>{{$haha->sum('jbgz2')}}</td>
       <td>{{$haha->sum('allowance')}}</td>
-      <td >{{$haha->sum('performancepay')*12}}</td>
+      <td >{{$haha->sum('performancepay2')}}</td>
       
       <td></td>
       <td>{{$haha->sum('jwf')}}</td>
