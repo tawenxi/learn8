@@ -9,7 +9,12 @@
         </section>
         <br><br><br><br>
 
-  <h1 class="title" align="middle"> {{$keyword}}</h1>
+  <h1 class="title" align="middle"> {{$keyword}}
+    <br>
+    @if($amount)
+      测算基数{{$amount}}
+    @endif
+  </h1>
  <h1 class="title" align="middle"> </h1>
 <table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
@@ -95,6 +100,8 @@
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
+      <th>年度</th>
+
       <th>基本工资</th>
     
       <th>津补贴</th>
@@ -113,7 +120,7 @@
     <tbody class='table-hover'>
             <tr class='danger'>
      
-        
+        <td>2021年数据</td>
       <td>{{$results_2021->jibengzi}}</td>
       <td>{{$results_2021->jinbutie}}</td>
       <td >{{$results_2021->jixiaogongzi}}</td>
@@ -132,7 +139,7 @@
 
    <tr class='danger'>
      
-        
+        <td>2022年预算</td>
       <td>{{$haha->sum('jbgz2')}}</td>
       <td>{{$haha->sum('allowance')}}</td>
       <td >{{$haha->sum('performancepay2')}}</td>
@@ -156,14 +163,15 @@
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
-      <th>社会保险</th>
+        <th>年度</th>
+      <th>社会保险(16%)</th>
     
-      <th>医疗保险</th>
-      <th>失业保险</th>
-      <th>工伤保险</th>
+      <th>医疗保险(在职6.8%-退休6%)</th>
+      <th>失业保险(0.5%)</th>
+      <th>工伤保险(0.16%)</th>
       <th>其他社会缴费</th>
-      <th>职业年金</th>
-      <th>住房公积金</th>
+      <th>职业年金(8%)</th>
+      <th>住房公积金(12%)</th>
 
       <th>其他工资福利</th>
 
@@ -176,6 +184,7 @@
     <tbody class='table-hover'>
             <tr class='success'>
      
+        <td>2021年数据</td>
         
       <td>{{$results_2021->shehuibaoxian}}</td>
       <td>{{$results_2021->yiliaobaoxian}}</td>
@@ -192,26 +201,30 @@
 
     </tr>
 
-<tr class='success'>
-     
-        
+    <tr class='success'>  
+      <td>2022年预算</td>
       <td>{{$haha->sum('ylbx2')}}</td>
       <td>{{$haha->sum('yb')}}</td>
-
       <td>{{$haha->sum('sb')}}</td>
-      <td>{{$haha->sum('gb')}}</td>
-      
+      <td>{{$haha->sum('gb')}}</td>  
       <td></td>
-
       <td>{{$haha->sum('nj')}}</td>
-   
       <td>{{$haha->sum('gjj2')}}</td>
-
       <td>{{$results_2021->qitagongzifuli}}</td>
-      
-
     </tr>
-       
+      @if($amount)
+    <tr class='info'>  
+      <td>根据基数{{$amount}}测算</td>
+      <td>{{$amount*0.16}}</td>
+      <td>{{$amount*0.068}}</td>
+      <td>{{$amount*0.005}}</td>
+      <td>{{$amount*0.0016}}</td>  
+      <td></td>
+      <td></td>
+      <td>{{$amount*0.12}}</td>
+      <td></td>
+    </tr>
+      @endif 
 </table>  
 
 
@@ -219,6 +232,7 @@
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
+        <th>年度</th>
       <th>取暖费</th>
     
       <th>工会经费</th>
@@ -238,7 +252,7 @@
     <tbody class='table-hover'>
             <tr class='success'>
      
-        
+        <td>2021年数据</td>
       <td>{{$results_2021->qunuanfei}}</td>
       <td>{{$results_2021->gonghuijingfei}}</td>
       
@@ -252,7 +266,7 @@
 
             <tr class='success'>
      
-        
+        <td>2022年预算</td>
       <td>{{$haha->sum('qrf')}}</td>
       <td>{{$haha->sum('ghjf')}}</td>
       
@@ -260,9 +274,20 @@
       <td></td>
       
       <td></td>
-      
+    </tr>
+
+
+          @if($amount)
+    <tr class='info'>  
+      <td>根据基数{{$amount}}测算</td>
+      <td></td>
+      <td>{{$amount*0.6*0.02}}</td>
+      <td></td>
+      <td></td>  
+      <td></td>
 
     </tr>
+      @endif 
        
 </table>  
 
@@ -271,6 +296,7 @@
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
+        <th>年度</th>
       <th>遗属补助</th>
     
       <th>独生子女父母奖励金</th>
@@ -282,7 +308,7 @@
 
     <tbody class='table-hover'>
             <tr class='success'>
-     
+     <td>2021年数据</td>
         
       <td>{{$results_2021->yishubuzhu}}</td>
       <td>{{$results_2021->dushengzinvfumujianglijin}}</td>

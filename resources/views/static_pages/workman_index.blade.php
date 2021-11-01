@@ -95,8 +95,8 @@
  
  <td>{{$result->unitname}}</td>
       <td>{{$result->personname}}</td>
-      <td>{{$result->jbgz2}}</td>
-      <td>{{$result->jbt2}}</td>
+      <td>{{$result->jbgz2}}<br></br>{{$result->jbgz}}</td>
+      <td>{{$result->jbt2}}<br></br>{{$result->jbt}}</td>
       <td>{{$result->performancepay2}}</td>
       <td>{{$result->bonus}}</td>
 

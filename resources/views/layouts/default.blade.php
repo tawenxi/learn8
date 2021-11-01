@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>@yield('title', '卫健委文件查询') - 卫健委文件查询</title>
+    <title>@yield('title', '财政局预算测算') - 财政局预算测算</title>
     <link rel="stylesheet" href="/css/app.css">
   </head>
   <body>
