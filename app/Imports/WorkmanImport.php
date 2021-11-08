@@ -50,7 +50,7 @@ class WorkmanImport implements ToModel, WithProgressBar,WithStartRow, WithHeadin
 
     public function startRow(): int
     {
-        return 5;
+        return 6;
     }
 
 

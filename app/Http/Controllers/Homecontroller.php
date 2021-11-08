@@ -15,10 +15,28 @@ class Homecontroller extends Controller
 
     }
     public function findman($keyword) {
+        if (strstr($keyword,'人民政府')) {
+            $keyword = str_replace("人民政府", "", $keyword);
+
+            $keyword1 = $keyword.'事业';
+            $keyword2 = $keyword.'行政';
+
+            $results = Yusuanman::where('unit', 'like',"%$keyword1%")
+            ->Orwhere('unit', 'like',"%$keyword2%")
+            ->orderby('formation','desc')
+            ->get();
+
+            //dd($results->count());
+            return view('static_pages.yusuanman_findman',compact('results','keyword'));
+        }
+
+        
+
         $results = Yusuanman::where('unit', 'like', "%$keyword%")
             ->Orwhere('education', 'like', "%$keyword%")
             ->Orwhere('name', 'like', "%$keyword%")
             ->Orwhere('certificateid', 'like', "%$keyword%")
+            ->orderby('formation','desc')
             ->get();
         return view('static_pages.yusuanman_findman',compact('results','keyword'));
 

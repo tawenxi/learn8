@@ -43,7 +43,9 @@
                   <tr class='success'>
 
 
-      <td></td><td></td><td></td>
+      <td></td>
+      <td></td>
+      <td>{{($results->sum('salary2')+$results->sum('salary1'))*12}}</td>
        <td></td>
       <td></td>
       <td></td>
@@ -72,7 +74,16 @@
 
     </tr>
       @foreach ($results as $k=>$result)
-      <tr class=''><th>{{$loop->index+1}}</th>
+
+
+    @if ($result['formation'] == '0303-自收自支事业')
+    <tr class='danger'>
+    @else
+    <tr>
+    @endif
+
+
+      <th>{{$loop->index+1}}</th>
    <td>{{$result->name}}</td>
       <td>{{substr($result->unit,7)}}</td>
       <td>{{substr($result->certificateid,8,6)}}</td>
