@@ -10,8 +10,16 @@
         <br><br><br><br>
 
   <h1 class="title" align="middle"> {{$keyword}} -- {{$results->count()}}人</h1>
- <h1 class="title" align="middle">  <{{$results->filter(function($v){return $v->ifonwork=='2-在职人员'; })->count()}}人在职>
-  <{{$results->filter(function($v){return $v->ifonwork=='3-退休人员'; })->count()}}人退休><font color="red"></font></h1>
+ <h1 class="title" align="middle">  <{{$results->filter(function($v){return $v->ifonwork=='2-2'; })->count()}}人在职>
+  <{{$results->filter(function($v){return $v->ifonwork=='3-3'; })->count()}}人退休@><font color="red"></font>
+
+  <{{$results->filter(function($v){return $v->sex=='2-女' AND $v->ifonwork=='2-2'; })->count()}}女干部@>
+    <{{$results->filter(function($v){return $v->type=='1-公务员' AND $v->ifonwork=='2-2'; })->count()}}公务员@>
+      <{{$results->filter(function($v){return $v->ifonwork=='2-2'; })->count()-$results->filter(function($v){return $v->type=='1-公务员' AND $v->ifonwork=='2-2'; })->count()}}事业@>
+
+      <{{$results->filter(function($v){return $v->type=='92-遗属'; })->count()}}遗属补助@>
+
+  </h1>
 <table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
@@ -40,7 +48,7 @@
       <th>年度工会</th>
       <th>办公费</th>
 
-      <th>合计</th>
+      <th>合计</th><th>去年</th>
 
 
 
@@ -84,7 +92,7 @@
 
       <td>{{round($results->sum('total'))}}</td>
   
-
+      <td></td>
 
 
 
@@ -119,7 +127,14 @@
       <td>{{$result->bgf}}</td>
 
       <td>{{round($result->total,0)}}</td>
+      @if ($result->has($key) == 'F' AND $result->istransfer($key) == 'N')
+      <td class="danger">
 
+      @else
+      <td class="">
+      @endif
+      <a href="/findman/{{$result->personname}}">{{$result->has($key)}}</a>
+        <a href="/transfer/{{$result->personname}}">{{$result->istransfer($key)}}</a></td>
 
 
 

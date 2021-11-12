@@ -7,12 +7,13 @@ use App\Workman;
 
 class WorkmanController extends Controller
 {
-    public function index ($keyword) {
+    public function index ($keyword, $key='') {
 
 
         $results = Workman::where('unitname', 'like', "%$keyword%")->orWhere('personname', 'like', "%$keyword%")->orderBy('salary1','desc')->get();
-       // dd(Workman::where('personname',  "周德榆")->first()->total2);
-        return view('static_pages.workman_index',compact('results','keyword'));
+        //dd($results->first()->has($key));
+
+        return view('static_pages.workman_index',compact('results','keyword','key'));
 
 
     }

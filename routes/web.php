@@ -22,7 +22,7 @@ Route::get('/retires/{keyword}', 'RetiresController@index')->name('retires_index
 
 Route::get('/retiresexport', 'RetiresController@export');
 Route::get('/unit/{keyword}', 'UnitController@index');
-Route::get('/workman/{keyword}', 'WorkmanController@index');
+Route::get('/workman/{keyword}/{key?}', 'WorkmanController@index');
 Route::get('/workman', 'WorkmanController@home');
 
 

@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Yusuanman;
+use App\TransferOrder;
 
 class Workman extends Model
 {
@@ -197,5 +199,43 @@ class Workman extends Model
     {
         $temp = $this->attributes['allowance'] - $this->GCBZBZ();
         return $temp*12;
+    }
+
+    public function getDanweiAttribute()  //单位全称
+    {
+        $temp = substr($this->attributes['unitname'], 7);
+        return $temp;
+    }
+    public function getPersonnameAttribute()  //单位全称
+    {
+        $temp = str_replace(' ', '', $this->attributes['personname']);
+        return $temp;
+    }
+
+
+    public function has($key)
+    {
+        if ($key) {
+            if (Yusuanman::where('unit','like',"%$key%")->where('name',$this->personname)->exists()) {
+                return 'T';
+            } else {
+                return 'F';
+            }
+        }
+        return "";
+    }
+
+
+
+    public function istransfer($key)
+    {
+        if ($key) {
+            if (TransferOrder::where('personname',$this->personname)->exists()) {
+                return 'Y';
+            } else {
+                return 'N';
+            }
+        }
+        return "";
     }
 }
