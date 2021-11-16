@@ -43,7 +43,7 @@
       <td>{{$result['name']}}</td>
       <td>{{$result['amount']}}</td>
 
-      <td>{{$result['zhaiyao']}}</td>
+      <td width="300">{{$result['zhaiyao']}}</td>
     </tr>
        @endforeach 
 

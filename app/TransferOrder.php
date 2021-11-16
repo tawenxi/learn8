@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class TransferOrder extends Model
 {
@@ -61,7 +62,8 @@ class TransferOrder extends Model
         if (strstr($this->attributes['persontype'],'退休')) {
                 return 0;
             }
-        if (strstr($this->attributes['from'],'医院') OR strstr($this->attributes['from'],'卫生院') OR strstr($this->attributes['to'],'医院') OR strstr($this->attributes['to'],'卫生院')) {
+        if (Str::contains($this->attributes['from'], ['医院', '卫生院']) OR 
+            Str::contains($this->attributes['to'], ['医院', '卫生院'])) {
                 return 0;
         }
         foreach ($this->XZBZ_unit as $unit) {
@@ -84,18 +86,15 @@ class TransferOrder extends Model
     }
     public function getBgfAttribute()  //办公费
     {
-        if (strstr($this->attributes['from'],'医院')) {
+
+        if (Str::contains($this->attributes['from'], ['医院', '卫生院'])) {
             return 0;
         }
-        if (strstr($this->attributes['from'],'卫生院')) {
+
+        if (Str::contains($this->attributes['to'], ['医院', '卫生院'])) {
             return 0;
         }
-        if (strstr($this->attributes['to'],'医院')) {
-            return 0;
-        }
-        if (strstr($this->attributes['to'],'卫生院')) {
-            return 0;
-        }
+
         if (strstr($this->attributes['persontype'],'公务员')) {
             return 5000;
         }
@@ -110,10 +109,26 @@ class TransferOrder extends Model
     public function getJbgzAttribute()  //基本工资
     {
         $temp = $this->attributes['salary1'] + $this->attributes['salary2'] + $this->attributes['salary3'] + $this->attributes['practicesalary'] + $this->attributes['othersalary'];
+        if (Str::contains($this->attributes['to'], ['人民医院','中医院','妇保院']) OR
+            Str::contains($this->attributes['from'], ['人民医院','中医院','妇保院'])) {
+            return $temp*0.5;
+        }
         return $temp;
     }
-
-    public function getYearAttribute()  //基本工资
+    public function getJinbutieAttribute()  //津补贴
+    {
+        if (Str::contains($this->attributes['to'], ['人民医院','中医院','妇保院']) OR
+            Str::contains($this->attributes['from'], ['人民医院','中医院','妇保院']) ) {
+            return $this->attributes['jinbutie']*0.4;
+        }
+        if (Str::contains($this->attributes['to'], '卫生院') OR
+            Str::contains($this->attributes['from'], '卫生院')) {
+            return $this->attributes['jinbutie']*0.8;
+        }
+        
+        return $this->attributes['jinbutie'];
+    }
+    public function getYearAttribute()  //年度
     {
         $temp = substr($this->attributes['orderid'],1,4);
         return $temp;
@@ -122,14 +137,15 @@ class TransferOrder extends Model
     
     public function getJbtAttribute()  //年度津补贴
     {
-        $temp = $this->attributes['jinbutie'];
+        $temp = $this->jinbutie;
         return $this->getamount($temp);
     }
 
     public function getRcgzAttribute()  //年度工资总额+社保16%+公积金12%
     {
         $roi = 1.28;
-        if (strstr($this->attributes['from'],'医院') OR strstr($this->attributes['from'],'卫生院') OR strstr($this->attributes['to'],'医院') OR strstr($this->attributes['to'],'卫生院')) {
+        if (Str::contains($this->attributes['from'], ['医院', '卫生院']) OR 
+            Str::contains($this->attributes['to'], ['医院', '卫生院'])) {
             $roi = 1.16;
         }
 
@@ -147,7 +163,8 @@ class TransferOrder extends Model
     }
     public function getGhjfroiAttribute()  // 年度工会经费
     {
-        if (strstr($this->attributes['from'],'医院') OR strstr($this->attributes['from'],'卫生院') OR strstr($this->attributes['to'],'医院') OR strstr($this->attributes['to'],'卫生院')) {
+        if (Str::contains($this->attributes['from'], ['医院', '卫生院']) OR 
+            Str::contains($this->attributes['to'], ['医院', '卫生院'])) {
             return 0;
         }
         return 0.6;
@@ -156,7 +173,8 @@ class TransferOrder extends Model
     public function getGhjfAttribute()  // 年度工会经费分摊率
     {
         $roi = 0.6;
-        if (strstr($this->attributes['from'],'医院') OR strstr($this->attributes['from'],'卫生院') OR strstr($this->attributes['to'],'医院') OR strstr($this->attributes['to'],'卫生院')) {
+        if (Str::contains($this->attributes['from'], ['医院', '卫生院']) OR 
+            Str::contains($this->attributes['to'], ['医院', '卫生院'])) {
             $roi = 0;
         }
         $temp = ($this->jbgz + $this->jbt) * 0.02 * $roi;
@@ -165,7 +183,8 @@ class TransferOrder extends Model
 
     public function getSbroiAttribute()  // 年度社保公积金分摊率
     {
-        if (strstr($this->attributes['from'],'医院') OR strstr($this->attributes['from'],'卫生院') OR strstr($this->attributes['to'],'医院') OR strstr($this->attributes['to'],'卫生院')) {
+        if (Str::contains($this->attributes['from'], ['医院', '卫生院']) OR 
+            Str::contains($this->attributes['to'], ['医院', '卫生院'])) {
             return 1.16;
         }
         return 1.28;
