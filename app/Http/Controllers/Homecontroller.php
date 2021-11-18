@@ -67,7 +67,9 @@ class Homecontroller extends Controller
         return view('static_pages.adjust_order',compact('results','keyword'));
     }
     public function adjustlist(){
-        $results = Adjust::all()->groupBy('unit');
+        $results = Adjust::all()->groupBy('unit')->sortByDesc(function ($value, $key) {
+    return $value->sum('amount');
+});
 
         //dd($results);
         return view('static_pages.adjustlist',compact('results'));

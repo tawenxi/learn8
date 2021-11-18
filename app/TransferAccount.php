@@ -14,15 +14,20 @@ class TransferAccount extends Model
 
     public function getAdjustedAmountAttribute()  // 调整乡镇补助
     {
+        $_amount = 0;
         if ($this->isvillage($this->from) AND !$this->isvillage($this->to) AND $this->isvillage($this->unit)) {
-            return (-300)*$this->attributes['month'];
+            $_amount = (-300)*$this->attributes['month'];
         }
 
         if (!$this->isvillage($this->from) AND $this->isvillage($this->to) AND !$this->isvillage($this->unit)) {
-            return 300*$this->attributes['month'];
+            $_amount = 300*$this->attributes['month'];
         }
 
-        return 0;
+        if ($this->description == '增加车补' AND $this->amount < 0) {
+            $_amount = $_amount - 500*$this->attributes['month'];
+        }
+
+        return $_amount;
     }
 
 
@@ -47,6 +52,9 @@ class TransferAccount extends Model
     }
 
     public function isvillage($unit) {
+        if ($this->ordertype == '退休' OR $this->ordertype == '辞职') {
+            return false;
+        }
         foreach ($this->villages as $key => $village) {
             if (strstr($unit, $village)) {
                 return true;

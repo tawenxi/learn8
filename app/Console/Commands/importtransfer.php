@@ -62,10 +62,10 @@ class importtransfer extends Command
 
         $result = TransferOrder::get();
         $flated = $result->flatMap(function($value) {
-            return collect([collect(["unit"=>$value->from,'amount'=>-$value->total,'zhaiyao'=>$value->zhaiyao(),'ordertype'=>$value->ordertype, 'jbgz'=>$value->jbgz, 'jbt'=>$value->jinbutie,'personname'=>$value->personname,'orderid'=>$value->orderid,'from'=>$value->from,'to'=>$value->to,'month'=>$value->CalculateTime])->all(),
+            return collect([collect(["unit"=>$value->from,'amount'=>-$value->total,'zhaiyao'=>$value->zhaiyao(),'ordertype'=>$value->ordertype, 'jbgz'=>$value->jbgz, 'jbt'=>$value->jinbutie,'personname'=>$value->personname,'orderid'=>$value->orderid,'from'=>$value->from,'to'=>$value->to,'month'=>$value->CalculateTime, 'description'=>$value->description])->all(),
 
 
-                                collect(["unit"=>$value->to,  'amount'=> $value->total,'zhaiyao'=>$value->zhaiyao(),'ordertype'=>$value->ordertype, 'jbgz'=>$value->jbgz, 'jbt'=>$value->jinbutie,'personname'=>$value->personname,'orderid'=>$value->orderid,'from'=>$value->from,'to'=>$value->to,'month'=>$value->CalculateTime])->all()]);
+                                collect(["unit"=>$value->to,  'amount'=> $value->total,'zhaiyao'=>$value->zhaiyao(),'ordertype'=>$value->ordertype, 'jbgz'=>$value->jbgz, 'jbt'=>$value->jinbutie,'personname'=>$value->personname,'orderid'=>$value->orderid,'from'=>$value->from,'to'=>$value->to,'month'=>$value->CalculateTime, 'description'=>$value->description])->all()]);
         });
         $flated->each(function($value, $key){
             TransferAccount::create($value);
