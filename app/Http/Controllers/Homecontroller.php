@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Yusuanman;
 use App\Adjust;
+use App\Village;
+
 
 class Homecontroller extends Controller
 {
@@ -73,5 +75,21 @@ class Homecontroller extends Controller
 
         //dd($results);
         return view('static_pages.adjustlist',compact('results'));
+    }
+
+
+    public function village($keyword)
+    {
+        if ($keyword) {
+            $results = Village::where('name', 'like', "%$keyword%")
+            ->Orwhere('belongto', 'like', "%$keyword%")
+            ->Orwhere('class', 'like', "%$keyword%")
+            ->get();
+        } else {
+            $results = Village::all();
+        }
+        
+        return view('static_pages.village',compact('results','keyword'));
+    
     }
 }

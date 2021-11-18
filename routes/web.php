@@ -46,6 +46,6 @@ Route::get('/adjustorder/{keyword}', 'HomeController@adjustorder');
 
 Route::get('/compare/{keyword}/{amount?}', 'YusuanController@compare');
 
-
+Route::get('/village/{keyword}', 'HomeController@village');
 
 
