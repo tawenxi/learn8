@@ -15,7 +15,7 @@
     <thead>
       <tr class='bg-primary'>
    
-      <th>单位</th>
+      <th>单 位</th>
       <th>基本工资</th>
       <th>津补贴</th>
       <th>车补</th>

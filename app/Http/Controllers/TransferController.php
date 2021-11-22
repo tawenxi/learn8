@@ -25,7 +25,6 @@ class TransferController extends Controller
         
         $results = TransferAccount::all()->groupBy('unit');
 
-        //dd($results);
         return view('static_pages.transferorder_list',compact('results'));
         
     }

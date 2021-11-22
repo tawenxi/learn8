@@ -78,15 +78,16 @@ class Homecontroller extends Controller
     }
 
 
-    public function village($keyword)
+    public function village($keyword=-1)
     {
-        if ($keyword) {
+        if ($keyword == -1) {
+            $results = Village::all();
+        } else {
             $results = Village::where('name', 'like', "%$keyword%")
             ->Orwhere('belongto', 'like', "%$keyword%")
             ->Orwhere('class', 'like', "%$keyword%")
             ->get();
-        } else {
-            $results = Village::all();
+            
         }
         
         return view('static_pages.village',compact('results','keyword'));

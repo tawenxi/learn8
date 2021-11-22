@@ -9,21 +9,66 @@
         </section>
         <br><br><br><br>
 
-  <h1 class="title" align="middle"> {{$keyword}} -- {{$results->count()}}人</h1>
- <h1 class="title" align="middle">  <{{$results->filter(function($v){return $v->ifonwork=='2-2'; })->count()}}人在职>
-  <{{$results->filter(function($v){return $v->ifonwork=='3-3'; })->count()}}人退休@><font color="red"></font>
+  <h1 class="title" align="middle"> {{$keyword}} -- {{$renshu = $results->count()}}人</h1>
+ <h1 class="title" align="middle">  <{{$zaizhi = $results->filter(function($v){return $v->ifonwork=='2-在职人员'; })->count()}}人在职>
+  <{{$results->filter(function($v){return $v->ifonwork=='3-退休人员'; })->count()}}人退休@><font color="red"></font>
 
-  <{{$results->filter(function($v){return $v->sex=='2-女' AND $v->ifonwork=='2-2'; })->count()}}女干部@>
-    <{{$results->filter(function($v){return $v->type=='1-公务员' AND $v->ifonwork=='2-2'; })->count()}}公务员@>
-      <{{$results->filter(function($v){return $v->ifonwork=='2-2'; })->count()-$results->filter(function($v){return $v->type=='1-公务员' AND $v->ifonwork=='2-2'; })->count()}}事业@>
+  <{{$results->filter(function($v){return $v->sex=='2-女' AND $v->ifonwork=='2-在职人员'; })->count()}}女干部@>
+    <{{$results->filter(function($v){return $v->type=='1-公务员' AND $v->ifonwork=='2-在职人员'; })->count()}}公务员@>
+      <{{$results->filter(function($v){return $v->ifonwork=='2-在职人员'; })->count()-$results->filter(function($v){return $v->type=='1-公务员' AND $v->ifonwork=='2-在职人员'; })->count()}}事业@>
 
-      <{{$results->filter(function($v){return $v->type=='92-遗属'; })->count()}}遗属补助@>
+      <{{$results->filter(function($v){return $v->persontype=='92-遗属'; })->count()}}遗属补助@>
+
+        <br>
+        基本工资={{$results->sum('jbgz2')}} <br>
+
+        公务员基本工资=
+
+        {{$results->filter(function($v){return $v->type=='1-公务员' AND $v->ifonwork=='2-在职人员'; })->sum('jbgz2')}} <br>
+        一次性奖金
+        {{$results->filter(function($v){return $v->type=='1-公务员' AND $v->ifonwork=='2-在职人员'; })->sum('jbgz2')/12}}
+        <br>
+        事业基本工资=
+
+        {{$results->sum('jbgz2') - $results->filter(function($v){return $v->type=='1-公务员' AND $v->ifonwork=='2-在职人员'; })->sum('jbgz2')}} <br>
+        绩效工资=
+
+        {{$results->filter(function($v){return $v->ifonwork=='2-在职人员'; })
+        ->reject(function($v){return $v->type=='1-公务员'; })
+
+        ->sum('rawjbt')*12}} + {{$results->sum('jbgz2')/12 - $results->filter(function($v){return $v->type=='1-公务员' AND $v->ifonwork=='2-在职人员'; })->sum('jbgz2')/12}}  = {{$results->filter(function($v){return $v->ifonwork=='2-在职人员'; })
+        ->reject(function($v){return $v->type=='1-公务员'; })
+
+        ->sum('rawjbt')*12 + $results->sum('jbgz2')/12 - $results->filter(function($v){return $v->type=='1-公务员' AND $v->ifonwork=='2-在职人员'; })->sum('jbgz2')/12}} <br>
+
+        津补贴=
+
+        {{$results->filter(function($v){return $v->ifonwork=='2-在职人员'; })
+        ->filter(function($v){return $v->type=='1-公务员'; })
+
+        ->sum('rawjbt')*12}} <br>
+
+        公积金基数
+        {{$gj = $results->sum('jbgz2') + $results->sum('rawjbt')*12 - request()->get('chebu')}}<br>
+        工会经费
+        {{round($gj*0.02*0.6)}}<br>
+        公积金
+        {{round($gj*0.12)}}<br>
+        工伤
+        {{round($gj*0.0016)}}<br>
+        养老保险基数
+        {{$yj = $results->sum('jbgz2') + $results->sum('rawjbt')*12 + $results->sum('jbgz2')/12 - request()->get('chebu')}}<br>
+        养老保险
+        {{$yj*0.16}}<br>
+        高温津贴{{$zaizhi*800}}
+        取暖费{{$renshu*240}}
 
   </h1>
 <table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
+        <th>loop</th>
     <th>单位</th>
       <th>姓名</th>
       <th>基本工资</th>
@@ -58,11 +103,12 @@
     <tbody class='table-hover'>
             <tr class='success'>
         
- 
+    <td></td>
       <td>合计</td>
        <td></td>
 
        <td>{{$results->sum('jbgz2')}}</td>
+
       <td>{{$results->sum('jbt2')}}</td>
 
       <td>{{$results->sum('performancepay2')}}</td>
@@ -99,13 +145,19 @@
     </tr>
       @foreach ($results as $k=>$result)
       <tr class=''>
-        
+
+        @if(strstr($result->type,'1-公务员') AND strstr($result->ifonwork,'在职'))
+        <tr class='success'>
+        @else
+        <tr class=''>
+        @endif
+        <td>{{$loop->index+1}}</td>
  
  <td>{{$result->unitname}}</td>
       <td>{{$result->personname}}</td>
       <td>{{$result->jbgz2}}<br></br>{{$result->jbgz}}</td>
       <td>{{$result->jbt2}}<br></br>{{$result->jbt}}</td>
-      <td>{{$result->performancepay2}}</td>
+      <td>{{$result->performancepay2}}<br>{{$result->performancepay}}</td>
       <td>{{$result->bonus}}</td>
 
       <td>{{round($result->ylbx2)}}</td>

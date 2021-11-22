@@ -97,7 +97,11 @@ class Workman extends Model
         $temp = $this->attributes['allowance']  - $this->GCBZBZ();
         return $temp;
     }
-
+    public function getRawjbtAttribute()  //津补贴
+    {
+        $temp = $this->attributes['allowance']  + $this->attributes['performancepay'];
+        return $temp;
+    }
 
     public function getJbt2Attribute()  //年度津补贴
     {
