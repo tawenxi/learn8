@@ -49,3 +49,22 @@ Route::get('/compare/{keyword}/{amount?}', 'YusuanController@compare');
 Route::get('/village/{keyword?}', 'HomeController@village');
 
 
+Route::get('/organization/{keyword?}', 'UnitController@organization');
+
+
+
+use App\Organization;
+Route::get('test',function(){
+	        $Organizations = Organization::all();
+        	
+
+
+        	if ($Organizations->where('unit', '统计局')->first()) {
+                dd($Organizations->where('unit', '统计局')->first()->office);
+            }
+
+
+ 
+            
+            
+        });

@@ -10,7 +10,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use App\TransferOrder;
 use App\TransferAccount;
-
+use App\Organization;
 
 class importtransfer extends Command
 {
@@ -60,12 +60,21 @@ class importtransfer extends Command
     public function createAccount()
     {
 
+        $Organizations = Organization::all();
         $result = TransferOrder::get();
-        $flated = $result->flatMap(function($value) {
-            return collect([collect(["unit"=>$value->from,'amount'=>-$value->total,'zhaiyao'=>$value->zhaiyao(),'ordertype'=>$value->ordertype, 'jbgz'=>$value->jbgz, 'jbt'=>$value->jinbutie,'personname'=>$value->personname,'orderid'=>$value->orderid,'from'=>$value->from,'to'=>$value->to,'month'=>$value->CalculateTime, 'description'=>$value->description])->all(),
+        $flated = $result->flatMap(function($value) use($Organizations) {
+            //dd($Organizations);
+
+            $office1 = $Organizations->where('unit', $value->from)->first()?
+                    $Organizations->where('unit', $value->from)->first()->office:'';
+
+            $office2 = $Organizations->where('unit', $value->to)->first()?
+                    $Organizations->where('unit', $value->to)->first()->office:'';
+
+            return collect([collect(["unit"=>$value->from,'amount'=>-$value->total,'zhaiyao'=>$value->zhaiyao(),'ordertype'=>$value->ordertype, 'jbgz'=>$value->jbgz, 'jbt'=>$value->jinbutie,'personname'=>$value->personname,'orderid'=>$value->orderid,'from'=>$value->from,'to'=>$value->to,'month'=>$value->CalculateTime, 'description'=>$value->description, 'office'=>$office1])->all(),
 
 
-                                collect(["unit"=>$value->to,  'amount'=> $value->total,'zhaiyao'=>$value->zhaiyao(),'ordertype'=>$value->ordertype, 'jbgz'=>$value->jbgz, 'jbt'=>$value->jinbutie,'personname'=>$value->personname,'orderid'=>$value->orderid,'from'=>$value->from,'to'=>$value->to,'month'=>$value->CalculateTime, 'description'=>$value->description])->all()]);
+                                collect(["unit"=>$value->to,  'amount'=> $value->total,'zhaiyao'=>$value->zhaiyao(),'ordertype'=>$value->ordertype, 'jbgz'=>$value->jbgz, 'jbt'=>$value->jinbutie,'personname'=>$value->personname,'orderid'=>$value->orderid,'from'=>$value->from,'to'=>$value->to,'month'=>$value->CalculateTime, 'description'=>$value->description, 'office'=>$office2])->all()]);
         });
         $flated->each(function($value, $key){
             TransferAccount::create($value);

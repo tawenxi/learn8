@@ -38,7 +38,8 @@
 
       <th>基本工资</th>
       <th>津补贴</th>
-      <th>摘 要</th>
+      <th>摘要</th>
+      <th>股室</th>
 
 
 
@@ -53,7 +54,7 @@
         
  
 
-      <td colspan="7" align="middle">{{$results->sum('newamount')}}</td>
+      <td colspan="8" align="middle">{{$results->sum('newamount')}}</td>
       
 
 
@@ -86,7 +87,7 @@
       <td>{{$result['jbt']}}</td>
 
       <td>{{$result['newzhaiyao']}}</td>
-
+      <td>{{$result['office']}}</td>
       
 
 

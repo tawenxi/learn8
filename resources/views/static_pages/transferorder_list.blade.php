@@ -32,6 +32,7 @@
       <th>单位</th>
       <th>金额</th>
       <th>明细</th>
+      <th>明 1细</th>
 
 
 
@@ -42,12 +43,12 @@
             <tr class='success'>
         
  
-      @foreach ($results as $k=>$result)
+      @foreach ($results as $k1=>$result)
       <tr class=''>
         
 
  
-      <td> <a href="/transfer/{{$k}}">{{$k}}</a></td>
+      <td> <a href="/transfer/{{$k1}}">{{$k1}}</a></td>
        <td>{{$result->sum('newamount')}}</td>
        <td>
 
@@ -56,6 +57,15 @@
            @endforeach 
        </td>
 
+        @if(App\Organization::where('unit',$k1)->first())
+
+       <td>{{App\Organization::where('unit',$k1)->first()->office}}</td>
+  
+
+       @else
+       <td></td>
+
+       @endif
 
 
 
