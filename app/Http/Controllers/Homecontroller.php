@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Yusuanman;
 use App\Adjust;
 use App\Village;
+use App\Organization;
+use App\Office;
+use App\TransferAccount;
 
 
 class Homecontroller extends Controller
@@ -92,5 +95,11 @@ class Homecontroller extends Controller
         
         return view('static_pages.village',compact('results','keyword'));
     
+    }
+
+
+    public function state() {
+        $results = Organization::all();
+        return view('static_pages.static',compact('results'));   
     }
 }

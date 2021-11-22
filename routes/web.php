@@ -53,18 +53,5 @@ Route::get('/organization/{keyword?}', 'UnitController@organization');
 
 
 
-use App\Organization;
-Route::get('test',function(){
-	        $Organizations = Organization::all();
-        	
 
-
-        	if ($Organizations->where('unit', '统计局')->first()) {
-                dd($Organizations->where('unit', '统计局')->first()->office);
-            }
-
-
- 
-            
-            
-        });
+Route::get('test', 'HomeController@state');

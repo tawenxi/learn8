@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Organization;
 
 class TransferAccount extends Model
 {
@@ -65,6 +66,13 @@ class TransferAccount extends Model
         }
 
         return false;
+    }
+
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class,'offcie','offcie')->withDefault(function ($organization, $TransferAccount) {
+            $organization->offcie = '未定义股室';
+        });
     }
 
 
