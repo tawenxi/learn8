@@ -24,10 +24,10 @@ class TransferAccount extends Model
             $_amount = 300*$this->attributes['month'];
         }
 
-        if (strstr($this->description , '增加车补') AND $this->amount < 0) {
+        if (strstr($this->description , '增加车补') AND $this->attributes['month'] < 0) {
             $_amount = $_amount + 500*$this->attributes['month'];
         }
-        if (strstr($this->description , '减少车补') AND $this->amount < 0) {
+        if (strstr($this->description , '减少车补') AND $this->attributes['month'] < 0) {
             $_amount = $_amount - 550*$this->attributes['month'];
         }
 

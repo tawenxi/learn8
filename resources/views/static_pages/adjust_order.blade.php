@@ -9,7 +9,7 @@
         </section>
 
         <br><br><br>
-        <h1 class="title" align="middle">增资调整单</h1>
+        <h1 class="title" align="middle">增资调整 单</h1>
         <br>
        <tr class='bg-primary'>
 

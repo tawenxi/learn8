@@ -59,7 +59,7 @@
   
 
        @else
-       <td></td>
+       <td class="btn btn-danger btn-sm">未定义</td>
 
        @endif
 
