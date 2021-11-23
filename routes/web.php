@@ -54,4 +54,4 @@ Route::get('/organization/{keyword?}', 'UnitController@organization');
 
 
 
-Route::get('test', 'HomeController@state');
+Route::get('/status', 'HomeController@status');

@@ -33,8 +33,8 @@
  
       <td>{{$result->office}}</td>
       <td>{{$result->unit}}</td>
-      <td>{{$amount1 = $result->transfers->sum('newamount')}}</td>
-      <td>{{$amount2 = $result->adjusts->sum('amount')}}</td>
+      <td> <a href="/transfer/{{$result->unit}}">{{$amount1 = $result->transfers->sum('newamount')}}</a> </td>
+      <td> <a href="/adjustorder/{{$result->unit}}">{{$amount2 = $result->adjusts->sum('amount')}}</a> </td>
       <td>{{$amount1 + $amount2}}</td>
 
 

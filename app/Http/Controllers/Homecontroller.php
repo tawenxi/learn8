@@ -98,8 +98,8 @@ class Homecontroller extends Controller
     }
 
 
-    public function state() {
+    public function status() {
         $results = Organization::all();
-        return view('static_pages.static',compact('results'));   
+        return view('static_pages.status',compact('results'));   
     }
 }
