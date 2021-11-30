@@ -29,6 +29,13 @@
     </thead>
 
     <tbody class='table-hover'>
+
+        <tr class='info'>
+            <td><a href="/status/">预算调整</a></td>
+            <td>/status/</td>
+            <td>预算调整</td>
+
+            </tr>  
             <tr class='success'>
             <td><a href="/retires/财政局">退休人员查询</a></td>
             <td>/retires/{keyword}</td>
@@ -46,6 +53,11 @@
             <td><a href="/unit/财政局">单位查询</a></td>
             <td>/unit/{keyword}</td>
             <td>单位查询</td>
+        </tr>
+            <tr class='info'>
+            <td><a href="/village/左安">行政村查询查询</a></td>
+            <td>/village/{keyword}</td>
+            <td>行政村查询</td>
         </tr>
 
             </tr>   
@@ -72,7 +84,7 @@
         </tr>
         <tr class='info'>
             <td><a href="/transferorders">所有介绍信</a></td>
-            <td>/unit/{keyword}</td>
+            <td>/transferorders/{keyword}</td>
             <td>所有介绍信</td>
         </tr>
 

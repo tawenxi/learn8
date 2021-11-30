@@ -27,6 +27,7 @@
     </thead>
 
     <tbody class='table-hover'>
+      <tr class="success middle"><td colspan="7" >{{$results->sum('amount')}}-{{$results->count()}}</td></tr>
       @foreach ($results as $k=>$result)
       <tr class=''>
         

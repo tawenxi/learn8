@@ -48,7 +48,13 @@
         
 
  
-      <td> <a href="/transfer/{{$k1}}">{{$k1}}</a></td>
+      <td> <a href="/transfer/{{$k1}}">{{$k1}}</a>
+        <br>
+        {{$result->count()}}
+        <br>
+
+        <font color='green'>+{{$result->filter(function($v){return $v['newamount']>0;})->count()}}</font><br>
+        <font color='red'>-{{$result->filter(function($v){return $v['newamount']<0;})->count()}}</font></td>
        <td>{{$result->sum('newamount')}}</td>
        <td>
 

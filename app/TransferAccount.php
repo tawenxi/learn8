@@ -38,6 +38,9 @@ class TransferAccount extends Model
 
     public function getNewAmountAttribute()  // 调整乡镇补助
     {
+        if (strstr($this->description , '调出单位无预算') AND $this->attributes['amount'] < 0) {
+            return 0;
+        }
         if (!($this->jbgz+$this->jbt)) {
             return 0;
         }

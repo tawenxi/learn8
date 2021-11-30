@@ -24,7 +24,9 @@
     <a class="btn btn btn-success" href='/transfer/县直'>县直</a>
       </tr>
 
- <h1 class="title" align="middle"><a href="/adjustorder/{{$keyword}}">{{$keyword}}</a>-----{{$results->count()}}条</h1>
+ <h1 class="title" align="middle"><a href="/adjustorder/{{$keyword}}">{{$keyword}}</a>-----{{$results->count()}}条----<br>
+  加{{$results->filter(function($v){return $v['newamount']>0;})->count()}}减
+  {{$results->filter(function($v){return $v['newamount']<0;})->count()}}</h1>
 <table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
