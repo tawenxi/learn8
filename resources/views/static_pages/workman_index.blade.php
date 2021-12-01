@@ -148,6 +148,9 @@
 
         @if(strstr($result->type,'1-公务员') AND strstr($result->ifonwork,'在职'))
         <tr class='success'>
+        @elseif(strstr($result->ifonwork,'退休'))
+        <tr class='info'>
+
         @else
         <tr class=''>
         @endif

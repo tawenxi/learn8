@@ -32,7 +32,11 @@
       <th>单位</th>
       <th>金额</th>
       <th>明细</th>
-      <th>明 1细</th>
+      <th>股室</th>
+      <th>增加</th>
+      <th>减少</th>
+
+
 
 
 
@@ -49,17 +53,12 @@
 
  
       <td> <a href="/transfer/{{$k1}}">{{$k1}}</a>
-        <br>
-        {{$result->count()}}
-        <br>
-
-        <font color='green'>+{{$result->filter(function($v){return $v['newamount']>0;})->count()}}</font><br>
-        <font color='red'>-{{$result->filter(function($v){return $v['newamount']<0;})->count()}}</font></td>
+      </td>
        <td>{{$result->sum('newamount')}}</td>
        <td>
 
            @foreach ($result as $k=>$res)
-           {{$res->newzhaiyao }} <br><br>
+           {{$res->newzhaiyao }} <br>
            @endforeach 
        </td>
 
@@ -73,7 +72,8 @@
 
        @endif
 
-
+       <td><font color='green'>+{{$result->filter(function($v){return $v['newamount']>0;})->count()}}</font></td>
+       <td><font color='red'>-{{$result->filter(function($v){return $v['newamount']<0;})->count()}}</font></td>
 
     </tr>
        @endforeach 

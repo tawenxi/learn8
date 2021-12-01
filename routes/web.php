@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Maatwebsite\Excel\Facades\Excel;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,3 +55,8 @@ Route::get('/organization/{keyword?}', 'UnitController@organization');
 
 
 Route::get('/status', 'HomeController@status');
+
+
+Route::get('/1', function(){
+	return Excel::download(new App\Exports\ListExport, 'invoices.xlsx');
+});

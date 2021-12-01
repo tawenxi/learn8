@@ -100,6 +100,7 @@ class Homecontroller extends Controller
 
     public function status() {
         $results = Organization::all();
-        return view('static_pages.status',compact('results'));   
+        $payments = Office::all();
+        return view('static_pages.status',compact('results','payments'));   
     }
 }

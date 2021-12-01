@@ -42,7 +42,7 @@
 
            @foreach ($result as $k=>$res)
            {{$res->zhaiyao }}
-           <button class=" btn btn-success btn-sm">{{$res->organization->office }}</button> <br><br>
+           <button class=" btn btn-success btn-sm">{{$res->organization->office }}</button> <br>
            @endforeach 
        </td>
 

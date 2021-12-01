@@ -31,6 +31,7 @@ class AdjustImport implements ToModel, WithProgressBar,WithStartRow,WithHeadingR
                'zhaiyao' => $row["摘要"],
                'year' => $row["年度"],
                'amount' => $row["金额"],
+               'office' => \DB::table('organizations')->where('unit',$row['单位'])->value('office'),
             ]);
         }
         

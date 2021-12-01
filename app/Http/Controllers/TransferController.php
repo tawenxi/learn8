@@ -23,6 +23,7 @@ class TransferController extends Controller
     public function list ()
     {
         
+        //$results = TransferAccount::where('ordertype','新增')->where('unit','like',"%行政%")->get()->groupBy('unit');
         $results = TransferAccount::all()->groupBy('unit');
 
         return view('static_pages.transferorder_list',compact('results'));

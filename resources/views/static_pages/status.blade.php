@@ -10,6 +10,48 @@
         <br><br><br><br>
 
  <h1 class="title" align="middle"> </h1>
+
+
+ <table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+    <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
+    <thead>
+      <tr class='bg-primary'>
+   
+      <th>股室</th>
+
+      <th>调动变动</th>
+      <th>增资变动</th>
+
+      <th>合计</th>
+
+
+      </tr>
+    </thead>
+
+    <tbody class='table-hover'>
+      @foreach ($payments as $k=>$payment)
+      <tr class=''>
+        
+ 
+      <td>{{$payment->office}}</td>
+   
+      <td> <a href="">{{$amount1 = $payment->transfers->sum('newamount')}}</a> </td>
+      <td> <a href="">{{$amount2 = $payment->adjusts->sum('amount')}}</a> </td>
+      <td>{{$amount1 + $amount2}}</td>
+
+
+
+    </tr>
+       @endforeach 
+       <tr>
+        <td>合计</td>
+        <td>{{$a = $payments->sum(function ($payment) {return $payment->transfers->sum('newamount');})}}</td>
+        <td>{{$b = $payments->sum(function ($payment) {return $payment->adjusts->sum('amount');})}}</td>
+        <td>{{$a+$b}}</td>
+
+       </tr>
+       
+</table>
 <table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
@@ -41,9 +83,24 @@
 
     </tr>
        @endforeach 
+       <tr>
+        <td>合计</td><td>合计</td>
+        <td>{{$a = $results->sum(function ($payment) {return $payment->transfers->sum('newamount');})}}</td>
+        <td>{{$b = $results->sum(function ($payment) {return $payment->adjusts->sum('amount');})}}</td>
+        <td>{{$a+$b}}</td>
 
+       </tr>
        
 </table>
+
+
+
+
+
+
+
+
+
 
 
 

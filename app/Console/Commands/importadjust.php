@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Imports\AdjustImport;
 use App\Adjust;
+use Illuminate\Support\Facades\DB;
 
 class importadjust extends Command
 {
@@ -39,6 +40,9 @@ class importadjust extends Command
      */
     public function handle()
     {
+        $this->output->title('清空表格');
+        DB::table('adjusts')->truncate();
+
         Adjust::where('year','2021')->delete();
         $this->output->title('Starting import adjust');
         (new AdjustImport)->withOutput($this->output)->import('excel/2021年增资调资登记本.xls');
