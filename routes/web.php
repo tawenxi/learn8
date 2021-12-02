@@ -33,6 +33,7 @@ Route::get('/transfer/县直', 'TransferController@xianzhi');
 
 Route::get('/transfer/{keyword}', 'TransferController@index');
 Route::get('/transferlist', 'TransferController@list');
+Route::get('/transferlist2', 'TransferController@list2');
 Route::get('/transfer', 'TransferController@home');
 Route::get('/transferorders', 'TransferController@order');
 

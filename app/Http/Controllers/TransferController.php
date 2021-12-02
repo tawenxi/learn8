@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\TransferOrder;
 use App\TransferAccount;
+use App\Organization;
 
 class TransferController extends Controller
 {
@@ -27,6 +28,12 @@ class TransferController extends Controller
         $results = TransferAccount::all()->groupBy('unit');
 
         return view('static_pages.transferorder_list',compact('results'));
+        
+    }
+    public function list2 ()
+    {
+        $results = Organization::all();
+        return view('static_pages.transferorder_list2',compact('results'));
         
     }
 
