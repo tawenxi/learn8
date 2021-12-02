@@ -31,11 +31,37 @@
     <tbody class='table-hover'>
 
         <tr class='info'>
-            <td><a href="/status/">预算调整</a></td>
+            <td><a href="/status/">预算调整资金明细
+</a></td>
             <td>/status/</td>
-            <td>预算调整</td>
+            <td>预算调整资金明细</td>
 
             </tr>  
+
+        <tr class='info'>
+            <td><a href="/transferlist3/">预算调整人数明细
+</a></td>
+            <td>/transferlist3/</td>
+            <td>预算调整人数明细</td>
+
+            </tr>  
+<tr class='info'>
+            <td><a href="/transfer">概览调动数据</a></td>
+            <td>/transfer</td>
+            <td>概览调动数据</td>
+        </tr>
+
+        <tr class='info'>
+            <td><a href="/transfer/左安">调动数据清单</a></td>
+            <td>/transfer/{keyword}</td>
+            <td>调动数据清单</td>
+        </tr>
+        <tr class='info'>
+            <td><a href="/transferorders">所有介绍信</a></td>
+            <td>/transferorders/{keyword}</td>
+            <td>所有介绍信</td>
+        </tr>
+
             <tr class='success'>
             <td><a href="/retires/财政局">退休人员查询</a></td>
             <td>/retires/{keyword}</td>
@@ -71,22 +97,7 @@
             <td>/workman</td>
             <td>概览预算测算数据</td>
         </tr>
-        <tr class='info'>
-            <td><a href="/transfer">概览调动数据</a></td>
-            <td>/transfer</td>
-            <td>概览调动数据</td>
-        </tr>
-
-        <tr class='info'>
-            <td><a href="/transfer/左安">调动数据清单</a></td>
-            <td>/transfer/{keyword}</td>
-            <td>调动数据清单</td>
-        </tr>
-        <tr class='info'>
-            <td><a href="/transferorders">所有介绍信</a></td>
-            <td>/transferorders/{keyword}</td>
-            <td>所有介绍信</td>
-        </tr>
+        
 
         <tr class='danger'>
             <td><a href="/findman/mutiman">找到重复预算人员</a></td>

@@ -17,6 +17,7 @@ class TransferController extends Controller
         ->Orwhere('personname', 'like', "%$keyword%")
         ->Orwhere('unit', 'like', "%$keyword%")
         ->Orwhere('ordertype', 'like', "%$keyword%")
+        ->orderby('unit')
         ->get();
         return view('static_pages.transferorder_index',compact('results','keyword'));
         
@@ -33,14 +34,24 @@ class TransferController extends Controller
     public function list2 ()
     {
         $results = Organization::all();
+
+        //$transfers = TransferAccount::
         return view('static_pages.transferorder_list2',compact('results'));
+        
+    }
+    public function list3 ()
+    {
+        $results = Organization::all();
+
+        //$transfers = TransferAccount::
+        return view('static_pages.transferorder_list3',compact('results'));
         
     }
 
     public function home ()
     {
-        
-        $results = TransferAccount::all()->groupBy('unit');
+
+        $results = TransferAccount::all()->groupBy('unit')->sortBy(function($v,$k){return $k;});
 
         //dd($results);
         return view('static_pages.transferorder_home',compact('results'));

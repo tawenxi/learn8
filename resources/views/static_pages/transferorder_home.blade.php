@@ -32,7 +32,7 @@
    
       <th>单位</th>
       <th>金额1</th>
-
+<th>数量</th>
       <th>股室</th>
      
 
@@ -52,6 +52,8 @@
  
       <td> <a href="/transfer/{{$k}}">{{$k}}</a></td>
        <td>{{$result->sum('newamount')}}</td>
+
+       <td>{{$result->count()}}</td>
 
        @if(App\Organization::where('unit',$k)->first())
 

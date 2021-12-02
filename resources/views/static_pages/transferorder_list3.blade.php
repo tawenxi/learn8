@@ -19,7 +19,7 @@
       <th>股室</th>
       <th>单位</th>
       
-      <th>明细</th>
+
       <th>调动</th>
       <th>增资</th>
       <th>增加</th>
@@ -36,7 +36,7 @@
 
     <tbody class='table-hover'>
      <tr class='success'>
-      <td colspan="3" class="middle">合计</td>
+      <td colspan="2" class="middle">合计</td>
       <td>
       {{$results->flatMap(function ($item, $key) {return $item->transfers;})->sum('newamount')}}
       </td>
@@ -69,15 +69,7 @@
  
       <td> {{$result->office}}</td>
        <td><a href="/transfer/{{$result->unit}}">{{$result->unit}}</a></td>
-       <td>
-        @foreach($result->transfers as $k=>$v)
-        {{$v->zhaiyao}}@@
-        @endforeach
-        @foreach($result->adjusts as $k=>$v)
-        {{$v->zhaiyao}}@@
-        @endforeach
 
-       </td>
 
 
        <td>{{$result->transfers->sum('newamount')}}</td>
