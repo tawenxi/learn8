@@ -63,8 +63,8 @@
       <th>增资变动</th>
 
       <th>合计</th>
-
-
+      <th>报刊费</th>
+<th>扣费后</th>
       </tr>
     </thead>
 
@@ -79,8 +79,8 @@
       <td> <a href="/adjustorder/{{$result->unit}}">{{$amount2 = $result->adjusts->sum('amount')}}</a> </td>
       <td>{{$amount1 + $amount2}}</td>
 
-
-
+      <td>{{$amount3 = $result->paperfee->amount??'0'}}</td>
+      <td>{{$amount1+$amount2-(float)$amount3}}</td>
     </tr>
        @endforeach 
        <tr>
@@ -88,6 +88,8 @@
         <td>{{$a = $results->sum(function ($payment) {return $payment->transfers->sum('newamount');})}}</td>
         <td>{{$b = $results->sum(function ($payment) {return $payment->adjusts->sum('amount');})}}</td>
         <td>{{$a+$b}}</td>
+        <td>{{$c = $results->sum(function ($result) {return (float)($result->paperfee->amount??0);})}}</td>
+        <td>{{$a+$b-$c}}</td>
 
        </tr>
        

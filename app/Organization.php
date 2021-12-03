@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Office;
 use App\TransferAccount;
 use App\Adjust;
+use App\Paperfee;
+
 
 class Organization extends Model
 {
@@ -29,6 +31,9 @@ class Organization extends Model
     {
         return $this->hasMany(Adjust::class,'unit', 'unit');
     }
-
+    public function paperfee()
+    {
+        return $this->hasOne(Paperfee::class,'unit', 'unit');
+    }
 
 }
