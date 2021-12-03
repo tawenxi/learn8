@@ -12,7 +12,7 @@
         <br>
         <br>
                       <tr class='bg-primary'>
-    <a class="btn btn btn-success" href='/transfer'>汇总</a>
+    <a class="btn btn btn-success" href='/transfer'>汇 总</a>
 
     <a class="btn btn btn-success" href='/transferlist'>列表</a>
     <a class="btn btn btn-success" href='/transferorders'>介绍信信息</a>

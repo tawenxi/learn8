@@ -61,6 +61,8 @@
       <th>单位</th>
       <th>调动变动</th>
       <th>增资变动</th>
+      <th>丧抚费</th>
+      <th>职 业年金</th>
 
       <th>合计</th>
       <th>报刊费</th>
@@ -76,20 +78,40 @@
       <td>{{$result->office}}</td>
       <td>{{$result->unit}}</td>
       <td> <a href="/transfer/{{$result->unit}}">{{$amount1 = $result->transfers->sum('newamount')}}</a> </td>
-      <td> <a href="/adjustorder/{{$result->unit}}">{{$amount2 = $result->adjusts->sum('amount')}}</a> </td>
-      <td>{{$amount1 + $amount2}}</td>
+      <td> <a href="/adjustorder/{{$result->unit}}">{{$amount2 = $result->adjusts->reject(function($v){return strstr($v->orderid,'丧') OR strstr($v->orderid,'职');})->sum('amount')}}</a> </td>
+
+      <td>
+        {{$amount8 = $result->adjusts->filter(function($v){return strstr($v->orderid,'丧') ;})->sum('amount')}}
+      </td>
+
+      <td>
+        {{$amount9 = $result->adjusts->filter(function($v){return strstr($v->orderid,'职') ;})->sum('amount')}}
+      </td>
+
+      <td>{{$amount1 + $amount2 +$amount8 +$amount9}}</td>
 
       <td>{{$amount3 = $result->paperfee->amount??'0'}}</td>
-      <td>{{$amount1+$amount2-(float)$amount3}}</td>
+      <td>{{$amount1 + $amount2 +$amount8 +$amount9-(float)$amount3}}</td>
     </tr>
        @endforeach 
        <tr>
         <td>合计</td><td>合计</td>
         <td>{{$a = $results->sum(function ($payment) {return $payment->transfers->sum('newamount');})}}</td>
-        <td>{{$b = $results->sum(function ($payment) {return $payment->adjusts->sum('amount');})}}</td>
-        <td>{{$a+$b}}</td>
-        <td>{{$c = $results->sum(function ($result) {return (float)($result->paperfee->amount??0);})}}</td>
-        <td>{{$a+$b-$c}}</td>
+        <td>{{$b = $results->sum(function ($payment) {return $payment->adjusts->reject(function($v){return strstr($v->orderid,'丧') OR strstr($v->orderid,'职');})->sum('amount');})}}</td>
+
+<td>
+{{$c = $results->sum(function ($payment) {return $payment->adjusts->filter(function($v){return strstr($v->orderid,'丧');})->sum('amount');})}}
+</td>
+
+<td>
+{{$d = $results->sum(function ($payment) {return $payment->adjusts->filter(function($v){return strstr($v->orderid,'职');})->sum('amount');})}}
+</td>
+
+
+
+        <td>{{$a+$b + $c + $d}}</td>
+        <td>{{$e = $results->sum(function ($result) {return (float)($result->paperfee->amount??0);})}}</td>
+        <td>{{$a+$b + $c + $d-$e}}</td>
 
        </tr>
        

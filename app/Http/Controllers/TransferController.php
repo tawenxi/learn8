@@ -17,6 +17,7 @@ class TransferController extends Controller
         ->Orwhere('personname', 'like', "%$keyword%")
         ->Orwhere('unit', 'like', "%$keyword%")
         ->Orwhere('ordertype', 'like', "%$keyword%")
+        ->Orwhere('office', 'like', "%$keyword%")
         ->orderby('unit')
         ->get();
         return view('static_pages.transferorder_index',compact('results','keyword'));
