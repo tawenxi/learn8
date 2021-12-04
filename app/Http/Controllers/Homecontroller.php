@@ -115,10 +115,20 @@ class Homecontroller extends Controller
     }
 
 
-    public function status() {
+    public function status2() {
+        //return 1;
         $results = Organization::all();
         $payments = Office::all();
         
-        return view('static_pages.status',compact('results','payments'));   
+        return view('static_pages.status2',compact('results','payments'));   
+    }
+
+
+    public function status() {
+   
+        $results = Organization::with(['transfers', 'adjusts'])->get();
+        $offices = Office::with(['organizations','transfers', 'adjusts'])->get();
+        
+        return view('static_pages.status',compact('results','offices'));   
     }
 }

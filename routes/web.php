@@ -56,9 +56,10 @@ Route::get('/organization/{keyword?}', 'UnitController@organization');
 
 
 
-Route::get('/status', 'HomeController@status');
+Route::get('/status2', 'HomeController@status2');
 
 
 Route::get('/1', function(){
 	return Excel::download(new App\Exports\ListExport, 'invoices.xlsx');
 });
+Route::get('/status', 'HomeController@status');
