@@ -10,6 +10,8 @@ class TransferAccount extends Model
     public $timestamps = false;
     protected $guarded = [];
 
+    public $casts = ['amount'=>'float'];
+
     public $villages = ['泉江','雩田','碧洲','草林','堆子前','左安','高坪','大汾','衙前','禾源','汤湖','枚江','珠田','巾石','大坑','双桥','新江','五斗江','西溪','南江','黄坑','戴家埔','营盘圩'];
 
 

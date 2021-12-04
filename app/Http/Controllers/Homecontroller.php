@@ -57,6 +57,7 @@ class Homecontroller extends Controller
 
 
     public function adjust(){
+
         $results = Adjust::all()->groupBy('unit');
 
         //dd($results);
@@ -65,10 +66,26 @@ class Homecontroller extends Controller
 
     public function adjustorder($keyword)
     {
-        $results = Adjust::where('unit', 'like', "%$keyword%")
+        $query = Adjust::query();
+        if (strstr($keyword,'+')) {
+            $condition = explode('+',$keyword);
+            $results = $query->where('orderid','like',"%$condition[0]%")->where('unit','like',"%$condition[1]%")->get();
+        } elseif(strstr($keyword,'-')) {
+            $keyword = str_replace('-','',$keyword);
+            $results = $query->where('unit', 'like', "%$keyword%")
             ->Orwhere('name', 'like', "%$keyword%")
             ->Orwhere('zhaiyao', 'like', "%$keyword%")
+            ->get()->reject(function($v){return strstr($v->orderid,'丧') OR strstr($v->orderid,'职');});
+
+        } else {
+            $results = $query->where('unit', 'like', "%$keyword%")
+            ->Orwhere('name', 'like', "%$keyword%")
+            ->Orwhere('zhaiyao', 'like', "%$keyword%")
+            ->Orwhere('office', 'like', "%$keyword%")
+            ->orderby('unit')
             ->get();
+        }
+
         return view('static_pages.adjust_order',compact('results','keyword'));
     }
     public function adjustlist(){

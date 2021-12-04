@@ -24,7 +24,9 @@ class TransferOrder extends Model
             Str::contains($this->attributes['to'], ['医院', '卫生院','妇保院'])) {
                 return 0;
         }
-        return ($this->CalculateTime >8) ? 800 :400;
+
+        $money = ($this->CalculateTime-3) * 200;
+        return ($money >800) ? 800 :(($money < 0) ? 0 :$money);
     }
     public function getQRFAttribute()  //取暖费
     {

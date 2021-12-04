@@ -8,4 +8,5 @@ class Paperfee extends Model
 {
     public $timestamps = false;
     protected $guarded = [];
+    public $casts = ['amount'=>'float'];
 }
