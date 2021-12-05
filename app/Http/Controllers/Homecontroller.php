@@ -127,7 +127,7 @@ class Homecontroller extends Controller
     public function status() {
    
         $results = Organization::with(['transfers', 'adjusts'])->get();
-        $offices = Office::with(['organizations','transfers', 'adjusts'])->get();
+        $offices = Office::with(['organizations.transfers','organizations.adjusts','transfers', 'adjusts'])->get();
         
         return view('static_pages.status',compact('results','offices'));   
     }

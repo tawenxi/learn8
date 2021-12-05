@@ -28,8 +28,8 @@ class TransferImport implements ToModel,WithHeadingRow
                'practicesalary' => str_replace(',', '', $row["见习工资"]),
                'othersalary' => str_replace(',', '', $row["教师护士工资"]),
                'jinbutie' => str_replace(',', '', $row["津补贴"]),
-               'from' => $row["from"],
-               'to' => $row["to"],
+               'from' => str_replace(' ','',$row["from"]),
+               'to' => str_replace(' ','',$row["to"]),
 
                'startdate' => $row["起算日期"],
                'gcbz' => $row["公车标准"],

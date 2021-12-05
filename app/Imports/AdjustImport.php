@@ -26,7 +26,7 @@ class AdjustImport implements ToModel, WithProgressBar,WithStartRow,WithHeadingR
         if ($row["金额"]) {
             return new Adjust([
                'orderid' => $row['单号'],
-               'unit' => $row['单位'],
+               'unit' => str_replace(" ", '',$row['单位']),
                'name' => $row["姓名"],
                'zhaiyao' => $row["摘要"],
                'year' => $row["年度"],
