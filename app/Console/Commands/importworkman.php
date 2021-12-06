@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 
 class importworkman extends Command
 {
@@ -41,6 +42,7 @@ class importworkman extends Command
      */
     public function handle()
     {
+        DB::table('workmans')->truncate();
         $this->output->title('Starting import');
         (new WorkmanImport)->withOutput($this->output)->import('excel\测算预算.xls');
         $this->output->success('Import successful');

@@ -32,15 +32,15 @@
     <thead>
       <tr class='bg-primary'>
    
-      <th>单号</th>
+      <th>单 号</th>
       <th>单位</th>
       <th>金额</th>
       <th>姓名</th>
 
 
       <th>基本工资</th>
-      <th>津补贴</th>
-      <th>摘要</th>
+      <th>津 补 贴</th>
+      <th>摘   要</th>
       <th>股 室</th>
 
 
