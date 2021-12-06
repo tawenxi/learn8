@@ -19,7 +19,7 @@ class TransferController extends Controller
         ->Orwhere('ordertype', 'like', "%$keyword%")
         ->Orwhere('office', 'like', "%$keyword%")
         ->orderby('unit')
-        ->get();
+        ->get()->groupBy('unit');
         return view('static_pages.transferorder_index',compact('results','keyword'));
         
     }

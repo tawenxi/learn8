@@ -24,16 +24,16 @@
     <a class="btn btn btn-success" href='/transfer/县直'>县直</a>
       </tr>
 
- <h1 class="title" align="middle"><a href="/adjustorder/{{$keyword}}">{{$keyword}}</a>-----{{$results->count()}}条----<br>
-  加{{$results->filter(function($v){return $v['newamount']>0;})->count()}}减
-  {{$results->filter(function($v){return $v['newamount']<0;})->count()}}</h1>
+<h1 class="title" align="middle"><a href="/adjustorder/{{$keyword}}">{{$keyword}}</a>-----{{$results->flatten()->count()}}条----<br>
+  加{{$results->flatten()->filter(function($v){return $v['newamount']>0;})->count()}}减
+  {{$results->flatten()->filter(function($v){return $v['newamount']<0;})->count()}}</h1>
 <table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
    
       <th>单 号</th>
-      <th>单位</th>
+      <th>单 位</th>
       <th>金额</th>
       <th>姓名</th>
 
@@ -56,7 +56,7 @@
         
  
 
-      <td colspan="8" align="middle">{{$results->sum('newamount')}}</td>
+      <td colspan="8" align="middle">{{$results->flatten()->sum('newamount')}}</td>
       
 
 
@@ -69,36 +69,41 @@
 
     </tr>
 
-      @foreach ($results as $k=>$result)
+      @foreach ($results as $ki=>$unit)
+        @foreach ($unit as $k=>$result)
 
           @if ($result['newamount'] < 0)
-    <tr class='danger'>
-    @else
-    <tr>
-    @endif
+          <tr class='danger'>
+          @else
+          <tr>
+          @endif
         
- 
-      <td>{{$result['orderid']}}</td>
-      
-      <td>{{$result['unit']}}</td>
+     
+          <td>{{$result['orderid']}}</td>
+          
+          <td>{{$result['unit']}}</td>
 
-      <td>{{$result['newamount']}}</td>
-      <td><a href="/findman/{{$result['personname']}}">{{$result['personname']}}</a></td>
+          <td>{{$result['newamount']}}</td>
+          <td><a href="/findman/{{$result['personname']}}">{{$result['personname']}}</a></td>
 
-      <td>{{$result['jbgz']}}</td>
-      <td>{{$result['jbt']}}</td>
+          <td>{{$result['jbgz']}}</td>
+          <td>{{$result['jbt']}}</td>
 
-      <td>{{$result['newzhaiyao']}}</td>
-      <td>{{$result['office']}}</td>
-      
+          <td>{{$result['newzhaiyao']}}</td>
+          <td>{{$result['office']}}</td>
+          </tr>
+          @endforeach 
+          <tr class="success"><td>单位汇总</td>
+            <td>{{$ki}}</td>
+            <td colspan="6" align="middle">{{$unit->sum('newamount')}}</td>
 
-
-
-
-
-    </tr>
+          </tr>
        @endforeach 
+          <tr class="success"><td>汇总</td>
+            <td></td>
+            <td colspan="6" align="middle">{{$results->flatten()->sum('newamount')}}</td>
 
+          </tr>
        
 </table>
 

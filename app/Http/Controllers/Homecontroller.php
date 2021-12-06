@@ -13,6 +13,7 @@ use App\TransferAccount;
 
 class Homecontroller extends Controller
 {
+    public $offices = ['预算股','农业股','经建办','','企业股','资金核算股','综合计划股'];
 
 
     public function home(){
@@ -85,7 +86,7 @@ class Homecontroller extends Controller
             ->orderby('unit')
             ->get();
         }
-
+        $results = $results->groupBy('unit');
         return view('static_pages.adjust_order',compact('results','keyword'));
     }
     public function adjustlist(){
@@ -117,8 +118,8 @@ class Homecontroller extends Controller
 
     public function status2() {
         //return 1;
-        $results = Organization::all();
-        $payments = Office::all();
+        $results = Organization::wherein('office',$this->offices)->get();
+        $payments = Office::wherein('office',$this->offices)->get();
         
         return view('static_pages.status2',compact('results','payments'));   
     }
@@ -126,8 +127,8 @@ class Homecontroller extends Controller
 
     public function status() {
    
-        $results = Organization::with(['transfers', 'adjusts'])->get();
-        $offices = Office::with(['organizations.transfers','organizations.adjusts','transfers', 'adjusts'])->get();
+        $results = Organization::with(['transfers', 'adjusts'])->wherein('office',$this->offices)->get();
+        $offices = Office::with(['organizations.transfers','organizations.adjusts','transfers', 'adjusts'])->wherein('office',$this->offices)->get();
         
         return view('static_pages.status',compact('results','offices'));   
     }
