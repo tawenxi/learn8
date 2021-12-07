@@ -28,6 +28,8 @@
       <th>合计</th>
       <th>报刊费</th>
 <th>扣费后</th>
+<th>+</th>
+<th>-</th>
       </tr>
 
        <tr class="danger">
@@ -48,6 +50,12 @@
         <td>{{$aa+$bb + $cc + $dd}}</td>
         <td>{{$ee = $results->sum(function ($result) {return ($result->paperfee->amount??0);})}}</td>
         <td>{{$aa+$bb + $cc + $dd-$ee}}</td>
+        <td>
+        {{$results->sum(function ($payment) {return $payment->transfers->filter(function($v){return $v->newamount>0;})->count();})}}
+        </td>
+        <td>
+          {{$results->sum(function ($payment) {return $payment->transfers->filter(function($v){return $v->newamount<0;})->count();})}}
+        </td>
 
        </tr>
     </thead>
@@ -76,6 +84,8 @@
 
               <td>{{$amount3 = $organization->paperfee->amount??'0'}}</td>
               <td>{{$amount1 + $amount2 +$amount8 +$amount9-$amount3}}</td>
+              <td ><button class="btn btn-success btn-sm">{{$organization->transfers->filter(function($v){return $v->newamount>0;})->count()}}</button></td>
+              <td ><button class="btn btn-danger btn-sm">{{$organization->transfers->filter(function($v){return $v->newamount<0;})->count()}}</button></td>
             </tr>
           @endforeach
                 <tr class='success'>
@@ -98,7 +108,12 @@
               <td>{{$e = $office->organizations->sum(function ($organization) {return ($organization->paperfee->amount??0);})}}</td>
               <td>{{$a+$b + $c + $d-$e}}</td>
 
-
+              <td>
+                {{$office->transfers->filter(function($v){return $v->newamount>0;})->count()}}
+              </td>
+              <td>
+                {{$office->transfers->filter(function($v){return $v->newamount<0;})->count()}}
+              </td>
 
              </tr>
       @endforeach 
@@ -113,7 +128,7 @@
         <td>{{$aa+$bb + $cc + $dd}}</td>
         <td>{{$ee}}</td>
         <td>{{$aa+$bb + $cc + $dd-$ee}}</td>
-
+        <td>1</td><td></td>
        </tr>
            <thead>
       <tr class='bg-primary'>
@@ -128,6 +143,8 @@
       <th>合计</th>
       <th>报刊费</th>
 <th>扣费后</th>
+<th></th>
+<th></th>
       </tr>
     </thead>
          
