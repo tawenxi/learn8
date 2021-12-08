@@ -3,6 +3,13 @@
   <head>
     <title>@yield('title', '财政局预算测算') - 财政局预算测算</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+      <style>
+        .header {
+          position: sticky;
+          top:0;
+        }
+
+  </style>
   </head>
   <body>
     @include('layouts._header')

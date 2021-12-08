@@ -13,24 +13,24 @@
 
  <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
  
-<div class="panel-footer" style="overflow: auto;">
+<div  style="width: 100%;height: 1500px;overflow: auto;">
 <table class="table table-bordered  border-danger table-striped table-hover table-condensed table-lg">
     
-    <thead>
-      <tr class='bg-warning sticky-sm-top'>
+    <thead class="header table-dark">
+      <tr class='bg-warning sticky-sm-top header'>
    
-      <th>股室</th>
-      <th>单位</th>
-      <th>调动变动</th>
-      <th>增资变动</th>
-      <th>丧抚费</th>
-      <th>职 业年金</th>
+      <th class="header" scope="col">股室</th>
+      <th class="header" scope="col">单位</th>
+      <th class="header" scope="col">调动变动</th>
+      <th class="header" scope="col">增资变动</th>
+      <th class="header" scope="col">丧抚费</th>
+      <th class="header" scope="col">职 业年金</th>
 
-      <th>合计</th>
-      <th>报刊费</th>
-      <th>扣费后</th>
-      <th>+</th>
-      <th>-</th>
+      <th class="header" scope="col">合计</th>
+      <th class="header" scope="col">报刊费</th>
+      <th class="header" scope="col">扣费后</th>
+      <th class="header" scope="col">+</th>
+      <th class="header" scope="col">-</th>
             </tr>
 
              <tr class="table-primary">
