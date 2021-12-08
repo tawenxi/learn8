@@ -1,7 +1,7 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-dark bg-primary fixed-top">
   <meta name="referrer" content="never">
   <div class="container">
-    <div class="col-md-offset-1 col-md-10">
+    <div class="col-md-offset-0 col-md-12">
      <!--  <div  class="navbar-header">财政局预算测算</div> -->
        <a class="navbar-header navbar-brand" href="#">财政局预算测算</a>
       <nav>
@@ -28,8 +28,7 @@
               </ul>
             </li>
           @else
-            <li><a href="">帮助</a></li>
-            <li><a href="">登录</a></li>
+
           @endif
         </ul>
       </nav>

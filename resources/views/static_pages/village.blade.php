@@ -15,8 +15,8 @@
 @endif
 ---{{$results->count()}}
  </h1>
-
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+<caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>

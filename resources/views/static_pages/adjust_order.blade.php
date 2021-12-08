@@ -16,7 +16,7 @@
       </tr>
 
  <h1 class="title" align="middle">{{$keyword}}-----{{$results->flatten()->count()}}条</h1>
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -31,7 +31,7 @@
       </tr>
     </thead>
     <tbody class='table-hover'>
-       <tr class='success'>
+       <tr class="table-warning">
       <td colspan="5" align="middle">{{$results->flatten()->sum('amount')}}</td>
     </tr>
     @foreach ($results as $ki=>$unit)
@@ -41,20 +41,20 @@
       
       <td width="10%">{{$result['unit']}}</td>
 
-      <td>{{$result['name']}}</td>
-      <td>{{$result['amount']}}</td>
+      <td width="10%">{{$result['name']}}</td>
+      <td width="10%">{{$result['amount']}}</td>
 
       <td width="300">{{$result['zhaiyao']}}</td>
     </tr>
        @endforeach 
 
-                <tr class="success"><td>单位汇总</td>
+                <tr class="table-success"><td>单位汇总</td>
             <td>{{$ki}}</td>
             <td colspan="3" align="middle">{{$unit->sum('amount')}}</td>
 
           </tr>
     @endforeach
-          <tr class="success"><td>汇总</td>
+          <tr class="table-primary"><td>汇总</td>
             <td></td>
             <td colspan="3" align="middle">{{$results->flatten()->sum('amount')}}</td>
 

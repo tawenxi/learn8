@@ -16,7 +16,8 @@
     @endif
   </h1>
  <h1 class="title" align="middle"> </h1>
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+ <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -34,7 +35,7 @@
     </thead>
 
     <tbody class='table-hover'>
-            <tr class='success'>
+            <tr class="table-success">
       <td>2021年数据</td>
         
       <td>{{$results_2021->zaizhirenshu}}</td>
@@ -60,7 +61,7 @@
 </table>
 
 
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -76,7 +77,7 @@
     </thead>
 
     <tbody class='table-hover'>
-            <tr class='success'>
+            <tr class="table-success">
      
         
       <td>{{$results_2021->jibenzhichuheji}}</td>
@@ -96,7 +97,7 @@
        
 </table>
 
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -118,7 +119,7 @@
     </thead>
 
     <tbody class='table-hover'>
-            <tr class='danger'>
+            <tr class="table-danger">
      
         <td>2021年数据</td>
       <td>{{$results_2021->jibengzi}}</td>
@@ -137,7 +138,7 @@
 
     </tr>
 
-   <tr class='danger'>
+   <tr class="table-danger">
      
         <td>2022年预算</td>
       <td>{{$haha->sum('jbgz2')}}</td>
@@ -159,7 +160,7 @@
 </table>  
 
 
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -182,7 +183,7 @@
     </thead>
 
     <tbody class='table-hover'>
-            <tr class='success'>
+            <tr class="table-success">
      
         <td>2021年数据</td>
         
@@ -201,7 +202,7 @@
 
     </tr>
 
-    <tr class='success'>  
+    <tr class="table-success">  
       <td>2022年预算</td>
       <td>{{$haha->sum('ylbx2')}}</td>
       <td>{{$haha->sum('yb')}}</td>
@@ -228,7 +229,7 @@
 </table>  
 
 
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -250,7 +251,7 @@
     </thead>
 
     <tbody class='table-hover'>
-            <tr class='success'>
+            <tr class="table-success">
      
         <td>2021年数据</td>
       <td>{{$results_2021->qunuanfei}}</td>
@@ -264,7 +265,7 @@
 
     </tr>
 
-            <tr class='success'>
+            <tr class="table-success">
      
         <td>2022年预算</td>
       <td>{{$haha->sum('qrf')}}</td>
@@ -292,7 +293,7 @@
 </table>  
 
 
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -307,7 +308,7 @@
     </thead>
 
     <tbody class='table-hover'>
-            <tr class='success'>
+            <tr class="table-success">
      <td>2021年数据</td>
         
       <td>{{$results_2021->yishubuzhu}}</td>

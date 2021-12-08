@@ -13,7 +13,7 @@
 
 
  <h1 class="title" align="middle"> 增资  调 整表 </h1>
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -28,7 +28,7 @@
     </thead>
 
     <tbody class='table-hover'>
-            <tr class='success'>
+            <tr class="table-success">
         
  
       @foreach ($results as $k=>$result)

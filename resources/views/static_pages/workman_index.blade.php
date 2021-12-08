@@ -64,7 +64,8 @@
         取暖费{{$renshu*240}}
 
   </h1>
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+  <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -101,7 +102,7 @@
     </thead>
 
     <tbody class='table-hover'>
-            <tr class='success'>
+            <tr class="table-success">
         
     <td></td>
       <td>合计</td>
@@ -147,7 +148,7 @@
       <tr class=''>
 
         @if(strstr($result->type,'1-公务员') AND strstr($result->ifonwork,'在职'))
-        <tr class='success'>
+        <tr class="table-success">
         @elseif(strstr($result->ifonwork,'退休'))
         <tr class='info'>
 

@@ -13,7 +13,7 @@
   
 
  <h1 align="middle"> 目录 </h1>
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -62,20 +62,20 @@
             <td>所有介绍信</td>
         </tr>
 
-            <tr class='success'>
+            <tr class="table-success">
             <td><a href="/retires/财政局">退休人员查询</a></td>
             <td>/retires/{keyword}</td>
             <td>退休人员查询</td>
 
             </tr>   
-            <tr class='success'>
+            <tr class="table-success">
             <td><a href="retiresexport">退休人员导出</a></td>
             <td>retiresexport</td>
             <td>退休人员导出</td>
 
             </tr>    
             </tr>   
-            <tr class='success'>
+            <tr class="table-success">
             <td><a href="/unit/财政局">单位查询</a></td>
             <td>/unit/{keyword}</td>
             <td>单位查询</td>
@@ -87,24 +87,24 @@
         </tr>
 
             </tr>   
-        <tr class='danger'>
+        <tr class="table-danger">
             <td><a href="/workman/财政局">预算数据测算</a></td>
             <td>/workman/{keyword}</td>
             <td>导入人员数据</td>
         </tr>
-        <tr class='danger'>
+        <tr class="table-danger">
             <td><a href="/workman">概览预算测算数据</a></td>
             <td>/workman</td>
             <td>概览预算测算数据</td>
         </tr>
         
 
-        <tr class='danger'>
+        <tr class="table-danger">
             <td><a href="/findman/mutiman">找到重复预算人员</a></td>
             <td>/unit/{keyword}</td>
             <td>找到重复预算人员</td>
         </tr>
-        <tr class='danger'>
+        <tr class="table-danger">
             <td><a href="/findman/刘小勇">搜索去年的预算人员</a></td>
             <td>/findman/{keyword}</td>
             <td>搜索去年的预算人员</td>

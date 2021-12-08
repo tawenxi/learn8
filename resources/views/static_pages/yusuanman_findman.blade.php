@@ -13,8 +13,8 @@
 
   <h1 class="title" align="middle">  <{{$results->filter(function($v){return $v->formation=='0101-行政' OR $v->formation=='0102-政法' OR $v->formation=='02-参照公务员管理的事业编制'; })->count()}}公务员>  <{{$results->filter(function($v){return $v->formation=='0301-全额事业' OR $v->formation=='0304-机关工勤'; })->count()}}全拨><{{$results->filter(function($v){return $v->formation=='0302-差额事业'; })->count()}}差拨><{{$results->filter(function($v){return $v->formation=='0303-自收自支事业'; })->count()}}自收自支></h1>
 
-
-<table class="table table-bordered table-striped table-hover table-condensed table-lg table-dark">
+<caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
+<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -40,7 +40,7 @@
     <tbody class='table-hover'>
 
 
-                  <tr class='success'>
+                  <tr class="table-success">
 
 
       <td></td>
@@ -77,7 +77,7 @@
 
 
     @if ($result['formation'] == '0303-自收自支事业')
-    <tr class='danger'>
+    <tr class="table-danger">
     @else
     <tr>
     @endif
