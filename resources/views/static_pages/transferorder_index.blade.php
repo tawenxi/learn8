@@ -28,7 +28,7 @@
   加{{$results->flatten()->filter(function($v){return $v['newamount']>0;})->count()}}减
   {{$results->flatten()->filter(function($v){return $v['newamount']<0;})->count()}}</h1>
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
-<table class="table table-bordered table-striped table-hover table-condensed table-lg ">
+<table class="table table-bordered border-primary table-striped table-hover table-condensed table-lg ">
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
@@ -53,7 +53,7 @@
 
     <tbody class='table-hover'>
 
-       <tr class="table-success">
+       <tr class="table-success border-primary">
         
  
 
@@ -74,7 +74,7 @@
         @foreach ($unit as $k=>$result)
 
           @if ($result['newamount'] < 0)
-          <tr class="table-danger">
+          <tr class="table-danger border-primary">
           @else
           <tr>
           @endif
@@ -94,13 +94,13 @@
           <td>{{$result['office']}}</td>
           </tr>
           @endforeach 
-          <tr class="table-success"><td>单位汇总</td>
+          <tr class="table-success border-primary"><td>单位汇总</td>
             <td>{{$ki}}</td>
             <td colspan="6" align="middle">{{$unit->sum('newamount')}}</td>
 
           </tr>
        @endforeach 
-          <tr class="table-primary"><td>汇总</td>
+          <tr class="table-primary border-primary"><td>汇总</td>
             <td></td>
             <td colspan="6" align="middle">{{$results->flatten()->sum('newamount')}}</td>
 

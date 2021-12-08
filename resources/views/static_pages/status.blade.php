@@ -13,8 +13,8 @@
 
  <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
  
-<div class="overflow-y: scroll" style="height: 280px; margin-top: -22px;">
-<table class="table table-bordered table-striped table-hover table-condensed table-lg">
+<div class="panel-footer" style="overflow: auto;">
+<table class="table table-bordered  border-danger table-striped table-hover table-condensed table-lg">
     
     <thead>
       <tr class='bg-warning sticky-sm-top'>
