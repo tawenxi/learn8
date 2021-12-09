@@ -3,7 +3,7 @@
   <div class="container">
     <div class="col-md-offset-0 col-md-12">
      <!--  <div  class="navbar-header">财政局预算测算</div> -->
-       <a class="navbar-header navbar-brand" href="#">财政局预算测算</a>
+       <a class="navbar-header navbar-brand" href="/status">财政局预算测算</a>
       <nav>
         <ul class="nav navbar-nav navbar-right">
           @if (Auth::check())
