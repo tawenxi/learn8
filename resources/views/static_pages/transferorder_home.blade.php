@@ -32,7 +32,7 @@
       <tr class='bg-primary'>
    
       <th>单位</th>
-      <th>金额1</th>
+      <th>金额</th>
 <th>数量</th>
       <th>股室</th>
      
@@ -79,14 +79,7 @@
 
       
       </div>
-      <aside class="col-md-4">
-        <section class="user_info">
-          、
-        </section>
-        <section class="stats">
-         、
-        </section>
-      </aside>
+
     </div>
  
 @stop

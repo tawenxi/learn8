@@ -16,19 +16,18 @@
       </tr>
 
  <h1 class="title" align="middle">{{$keyword}}-----{{$results->flatten()->count()}}条</h1>
-<table class="table table-bordered table-striped border-primary table-hover table-condensed table-lg ">
-    <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
-    <thead>
-      <tr class='bg-primary'>
-   
-      <th>单号</th>
-      <th>单位</th>
-      <th>姓名</th>
-
-      <th>金额</th>
-      <th>摘 要</th>
+<table class="table table-bordered table-striped border-primary table-hover table-condensed table-lg"
+  id="testTable"
+  data-toggle="table"
+  data-search="true"
+  data-search-highlight="true"
+  data-sticky-header="true">
     
-      </tr>
+    <thead class="header table-dark">
+   
+
+    
+   
     </thead>
     <tbody class='table-hover'>
        <tr class="table-warning border-primary">
@@ -59,18 +58,22 @@
             <td colspan="3" align="middle">{{$results->flatten()->sum('amount')}}</td>
 
           </tr>
-       
+           <thead>
+      <tr class='bg-warning'>
+   
+      <th>单号</th>
+      <th>单位</th>
+      <th>姓名</th>
+
+      <th>金额</th>
+      <th>摘 要</th>
+    
+      </tr>
+    </thead>
 </table>
    
       </div>
-      <aside class="col-md-4">
-        <section class="user_info">
-          、
-        </section>
-        <section class="stats">
-         、
-        </section>
-      </aside>
+
     </div>
  
 @stop

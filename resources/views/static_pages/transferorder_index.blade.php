@@ -28,46 +28,21 @@
   加{{$results->flatten()->filter(function($v){return $v['newamount']>0;})->count()}}减
   {{$results->flatten()->filter(function($v){return $v['newamount']<0;})->count()}}</h1>
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
-<table class="table table-bordered border-primary table-striped table-hover table-condensed table-lg ">
-    <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
-    <thead>
-      <tr class='bg-primary'>
-   
-      <th>单 号</th>
-      <th>单 位</th>
-      <th>金额</th>
-      <th>姓名</th>
+<table class="table table-bordered  border-danger table-striped table-hover table-condensed table-lg"
+  id="testTable"
+  data-toggle="table"
+  data-search="true"
+  data-search-highlight="true"
+  data-sticky-header="true">
+    
+    <thead class="header table-dark">
 
-
-      <th>基本工资</th>
-      <th>津 补 贴</th>
-      <th>摘   要</th>
-      <th>股 室</th>
-
-
-
-
-
-      </tr>
+      
     </thead>
 
     <tbody class='table-hover'>
-
        <tr class="table-success border-primary">
-        
- 
-
-      <td colspan="8" align="middle">{{$results->flatten()->sum('newamount')}}</td>
-      
-
-
-
-      
-
-
-
-
-
+      <td colspan="8" align="middle"><center>{{$results->flatten()->sum('newamount')}}</center></td>
     </tr>
 
       @foreach ($results as $ki=>$unit)
@@ -105,7 +80,20 @@
             <td colspan="6" align="middle">{{$results->flatten()->sum('newamount')}}</td>
 
           </tr>
-       
+           <thead class="header table-dark">
+      <tr class='bg-warning sticky-sm-top header'>
+   
+      <th>单 号</th>
+      <th>单 位</th>
+      <th>金额22</th>
+      <th>姓名</th>
+      <th>基本工资</th>
+      <th>津 补 贴</th>
+      <th>摘   要</th>
+      <th>股 室</th>
+      </tr>
+      
+    </thead>
 </table>
 
 
@@ -114,14 +102,7 @@
 
       
       </div>
-      <aside class="col-md-4">
-        <section class="user_info">
-          、
-        </section>
-        <section class="stats">
-         、
-        </section>
-      </aside>
+
     </div>
  
 @stop

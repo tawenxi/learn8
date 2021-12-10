@@ -326,14 +326,7 @@
        
 </table>  
       </div>
-      <aside class="col-md-4">
-        <section class="user_info">
-          、
-        </section>
-        <section class="stats">
-         、
-        </section>
-      </aside>
+
     </div>
  
 @stop

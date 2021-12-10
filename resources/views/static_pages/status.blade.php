@@ -13,27 +13,37 @@
 
  <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
  
-<div  style="width: 100%;height: 1500px;overflow: auto;">
-<table class="table table-bordered  border-danger table-striped table-hover table-condensed table-lg">
+
+
+<table class="table table-bordered  border-danger table-striped table-hover table-condensed table-lg"
+  id="testTable"
+  data-toggle="table"
+  data-search="true"
+  data-search-highlight="true"
+  data-sticky-header="true">
     
     <thead class="header table-dark">
       <tr class='bg-warning sticky-sm-top header'>
    
-      <th class="header" scope="col">股室</th>
-      <th class="header" scope="col">单位</th>
-      <th class="header" scope="col">调动变动</th>
-      <th class="header" scope="col">增资变动</th>
-      <th class="header" scope="col">丧抚费</th>
-      <th class="header" scope="col">职 业年金</th>
+      <th>股室</th>
+      <th>单位</th>
+      <th>调动变动</th>
+      <th>增资变动</th>
+      <th>丧抚费</th>
+      <th>职 业年金</th>
 
-      <th class="header" scope="col">合计</th>
-      <th class="header" scope="col">报刊费</th>
-      <th class="header" scope="col">扣费后</th>
-      <th class="header" scope="col">+</th>
-      <th class="header" scope="col">-</th>
+      <th>合计</th>
+      <th>报刊费</th>
+      <th>扣费后</th>
+      <th>+</th>
+      <th>-</th>
+            
+          </thead>
+
+          <tbody class='table-hover'>
             </tr>
 
-             <tr class="table-primary">
+             <tr class="table-success table-bordered border-danger">
               <td>合计</td><td>合计</td>
               <td>{{$aa = $results->sum(function ($payment) {return $payment->transfers->sum('newamount');})}}</td>
               <td>{{$bb = $results->sum(function ($payment) {return $payment->adjusts->reject(function($v){return strstr($v->orderid,'丧') OR strstr($v->orderid,'职');})->sum('amount');})}}</td>
@@ -59,9 +69,6 @@
               </td>
 
              </tr>
-          </thead>
-
-          <tbody class='table-hover'>
 
             @foreach ($offices as $k=>$office)
                 @foreach($office->organizations as $key=>$organization)
@@ -132,39 +139,18 @@
               <td>{{$jia}}</td><td>{{$jian}}</td>
              </tr>
                  <thead>
-            <tr class='bg-primary'>
-         
-            <th>股室</th>
-            <th>单位</th>
-            <th>调动变动</th>
-            <th>增资变动</th>
-            <th>丧抚费</th>
-            <th>职 业年金</th>
-
-            <th>合计</th>
-            <th>报刊费</th>
-      <th>扣费后</th>
-      <th></th>
-      <th></th>
-      </tr>
+           
     </thead>
     </tbody>
     </table>
-    </div>     
+       
      
 
 
 
       
       </div>
-      <aside class="col-md-4">
-        <section class="user_info">
-          、
-        </section>
-        <section class="stats">
-         、
-        </section>
-      </aside>
+
     </div>
  
 @stop
