@@ -37,7 +37,7 @@
 
  
       <td> <a href="/transfer/{{$k}}">{{$k}}</a></td>
-       <td>{{$result->sum('amount')}}</td>
+       <td><center>{{$result->sum('amount')}}</center></td>
        <td>
 
            @foreach ($result as $k=>$res)

@@ -9,7 +9,7 @@
         </section>
 
         <br><br><br>
-        <h1 class="title" align="middle">增资 调 整 单</h1>
+        <h1 class="title" align="middle">增资调整单</h1>
         <br>
        <tr class='bg-primary'>
 
@@ -21,7 +21,8 @@
   data-toggle="table"
   data-search="true"
   data-search-highlight="true"
-  data-sticky-header="true">
+  data-sticky-header="true"
+  data-search-align="right">
     
     <thead class="header table-dark">
    
@@ -30,8 +31,8 @@
    
     </thead>
     <tbody class='table-hover'>
-       <tr class="table-warning border-primary">
-      <td colspan="5" align="middle">{{$results->flatten()->sum('amount')}}</td>
+       <tr class="table-success">
+      <td colspan="5"><center>{{$results->flatten()->sum('amount')}}</center></td>
     </tr>
     @foreach ($results as $ki=>$unit)
     @foreach ($unit as $k=>$result)
@@ -59,7 +60,7 @@
 
           </tr>
            <thead>
-      <tr class='bg-warning'>
+      <tr class='table-dark'>
    
       <th>单号</th>
       <th>单位</th>

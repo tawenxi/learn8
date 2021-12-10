@@ -16,6 +16,9 @@
 
 
 <table class="table table-bordered  border-danger table-striped table-hover table-condensed table-lg"
+
+
+  
   id="testTable"
   data-toggle="table"
   data-search="true"
