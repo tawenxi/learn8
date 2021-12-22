@@ -14,7 +14,7 @@
     <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
     <thead>
       <tr class='bg-primary'>
-   
+      <th>id</th>
       <th>单位编号</th>
       <th>单位名称</th>
       <th>姓名</th>
@@ -27,13 +27,13 @@
     </thead>
 
     <tbody class='table-hover'>
-      <tr class="success middle"><td colspan="7" >{{$results->sum('amount')}}-{{$results->count()}}</td></tr>
+      <tr class="table-success"><td colspan="8" ><center>{{$results->sum('amount')}}-{{$results->count()}}</center></td></tr>
       @foreach ($results as $k=>$result)
       <tr class=''>
         
  
- 
-   <td>{{$result->unitid}}</td>
+      <td>{{$loop->index+1}}</td>
+      <td>{{$result->unitid}}</td>
       <td>{{$result->unitname}}</td>
       <td>{{$result->personname}}</td>
       <td class="">{{$result->certificateid}}</td>

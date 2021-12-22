@@ -17,8 +17,9 @@ class RetiresController extends Controller
         ->Orwhere('personname', 'like', "%$keyword%")
         ->Orwhere('certificateid', 'like', "%$keyword%")
         ->Orwhere('retirestime', 'like', "%$keyword%")
+        ->OrderBy('retirestime','desc')
         //->get();
-        ->paginate(100);
+        ->paginate(1000);
         //$test = Document::first()->biaoti;
         //dd($result->first());
         return view('static_pages.retires_index',compact('results','keyword'));
