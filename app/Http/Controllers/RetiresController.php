@@ -11,7 +11,7 @@ class RetiresController extends Controller
 {
     function index ($keyword)
     {
-
+            
         $results = Retire::where('unitid', 'like', "%$keyword%")
         ->Orwhere('unitname', 'like', "%$keyword%")
         ->Orwhere('personname', 'like', "%$keyword%")

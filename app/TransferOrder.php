@@ -34,6 +34,11 @@ class TransferOrder extends Model
         if ($this->ordertype == '退休') {
                 return 0;
         }
+
+        if (Str::contains($this->attributes['from'], ['医院', '卫生院','妇保']) OR 
+            Str::contains($this->attributes['to'], ['医院', '卫生院','妇保院'])) {
+                return 0;
+        }
         return 240;
     }
     public function getYbfAttribute()  //医保费

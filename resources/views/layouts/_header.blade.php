@@ -1,37 +1,23 @@
 <header class="navbar navbar-dark bg-primary fixed-top">
-  <meta name="referrer" content="never">
   <div class="container">
     <div class="col-md-offset-0 col-md-12">
-     <!--  <div  class="navbar-header">财政局预算测算</div> -->
-       <a class="navbar-header navbar-brand" href="/status">财政局预算测算</a>
-      <nav>
-        <ul class="nav navbar-nav navbar-right">
-          @if (Auth::check())
-            <li><a href="">用户列表</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                {{ Auth::user()->name }} <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="">个人中心</a></li>
-                <li><a href="">编辑资料</a></li>
-                <li class="divider"></li>
-                <li>
-                  <a id="logout" href="#">
-                    <form action="{{ route('logout') }}" method="POST">
-                      {{ csrf_field() }}
-                      {{ method_field('DELETE') }}
-                      <button class="btn btn-block btn-danger" type="submit" name="button">退出</button>
-                    </form>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          @else
+       <a class="navbar-header navbar-brand text-end" href="/status">财政局预算测算</a>
+    
 
-          @endif
+      <!-- Example split danger button -->
+      <div class="btn-group float-end">
+        <button type="button" class="btn btn-danger">{{$_SESSION['ND']}}年度</button>
+        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/session/2021">2021年度</a></li>
+          <li><a class="dropdown-item" href="/session/2022">2022年度</a></li>
+          
+
         </ul>
-      </nav>
+      </div>
+
     </div>
   </div>
 </header>

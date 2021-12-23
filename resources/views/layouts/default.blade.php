@@ -14,19 +14,14 @@
       <div class="offset-md-0 col-md-12">
         @include('shared.messages')
         @yield('content')
-        <!-- @include('layouts._footer') -->
+        @include('layouts._footer')
         
       </div>
     </div>
 
-    <script src="/js/app.js"></script>
-
+    <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/jquery.min.js"></script>
-   
-   
     <script src="/js/bootstrap-table.min.js"></script>
     <script src="/js/bootstrap-table-sticky-header.min.js"></script>
-
-
   </body>
 </html>

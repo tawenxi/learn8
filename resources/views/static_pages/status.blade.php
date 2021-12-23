@@ -9,7 +9,7 @@
         </section>
         <br><br><br><br>
 
- <h1 class="title" align="middle"> 2021年预算调整汇总表 </h1>
+ <h1 class="title" align="middle"> {{$_SESSION['ND']}}年预算调整汇总表 </h1>
 
  <caption><center>{{ date("Y-m-d H:i:s") }}</center></caption>
  
