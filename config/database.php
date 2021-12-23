@@ -7,6 +7,9 @@ session_start(); //开启Session功能
 $default = env('DB_CONNECTION', 'mysql_2021');
 
 //dd($_SESSION["ND"]);
+if (!isset($_SESSION["ND"])) {
+    $_SESSION["ND"] = '2022';
+}
 switch ($_SESSION["ND"]) {
     case '2021':
         $default = 'mysql_2021';

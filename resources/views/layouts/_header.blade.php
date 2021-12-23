@@ -6,11 +6,14 @@
 
       <!-- Example split danger button -->
       <div class="btn-group float-end">
-        <button type="button" class="btn btn-danger">{{$_SESSION['ND']}}年度</button>
+        <button type="button" class="btn btn-primary">{{$_SESSION['ND']}}年度</button>
         <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-          <span class="visually-hidden">Toggle Dropdown</span>
+          <span class="visually">请选择年度</span>
         </button>
         <ul class="dropdown-menu">
+          
+          <li><a class="dropdown-item" href="#">请选择年度</a></li>
+          <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="/session/2021">2021年度</a></li>
           <li><a class="dropdown-item" href="/session/2022">2022年度</a></li>
           

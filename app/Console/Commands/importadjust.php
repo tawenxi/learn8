@@ -45,7 +45,7 @@ class importadjust extends Command
 
         Adjust::where('year','2021')->delete();
         $this->output->title('Starting import adjust');
-        (new AdjustImport)->withOutput($this->output)->import('excel/2021年增资调资登记本.xls');
+        (new AdjustImport)->withOutput($this->output)->import('excel/2022年增资调资登记本.xls');
         $this->output->success('Import successful');
     }
 }
